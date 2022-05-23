@@ -10,7 +10,7 @@ function SignInPage() {
 
   const labelStyle = "mb-[0.5rem] flex flex-col font-bold"
 
-  const buttonStyle = "hover:bg-black-600 w-full rounded bg-black py-3 text-white mt-[2rem]"
+  const buttonStyle = "hover:bg-black-600 w-full rounded bg-black py-3 text-white mt-[2rem] transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:text-[1rem] duration-300 ..."
 
   const inputStyle = 'p-[0.25rem] mt-[0.25rem]'
 

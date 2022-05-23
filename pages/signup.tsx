@@ -7,12 +7,12 @@ import Image from 'next/image'
 function SignUpPage() {
 
   const h1Styling = "mt-[1rem] mb-[0.2rem] text-3xl font-bold"
-  
+
   const labelStyle = "mb-[0.5rem] flex flex-col font-bold"
 
   const inputStyle = 'p-[0.25rem] mt-[0.25rem]'
 
-  const buttonStyle = "hover:bg-black-600 w-full rounded bg-black py-3 text-white mt-[2rem]"
+  const buttonStyle = "hover:bg-black-600 w-full rounded bg-black py-3 text-white mt-[2rem] transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:text-[1rem] duration-300 ..."
 
   const selectStyle = "form-select appearance-none block w-full px-3 py-1.5 my-[0.25rem] text-base font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-black focus:outline-none"
 
