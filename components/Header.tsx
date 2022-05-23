@@ -19,7 +19,7 @@ function NavBar() {
             src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp" 
             className ={avatar}
             alt="Avatar"
-            onClick={setDropDown}
+            onClick={()=>setDropDown}
           />
         </div>
         <p>username</p>
