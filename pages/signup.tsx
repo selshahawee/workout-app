@@ -5,10 +5,18 @@ import Logo from '../images/logo.png'
 import Image from 'next/image'
 
 function SignUpPage() {
-  const labelStyle = "mb-[0.5rem] flex flex-col"
+
+  const h1Styling = "mt-[1rem] mb-[0.2rem] text-3xl font-bold"
+  
+  const labelStyle = "mb-[0.5rem] flex flex-col font-bold"
+
   const inputStyle = 'p-[0.25rem] mt-[0.25rem]'
+
+  const buttonStyle = "hover:bg-black-600 w-full rounded bg-black py-3 text-white mt-[2rem]"
+
   const selectStyle = "form-select appearance-none block w-full px-3 py-1.5 my-[0.25rem] text-base font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-black focus:outline-none"
-  const gender = ['male', 'female']
+
+
   const formik = useFormik({
     initialValues: {
       firstName: '',
@@ -37,7 +45,7 @@ function SignUpPage() {
                 <Image src={Logo} alt="brand" layout='fill' objectFit='contain'/>
               </div>
             <div className="p-0 text-left font-sans">
-              <h1 className="mt-[1rem] mb-[0.2rem] text-3xl font-bold">
+              <h1 className={h1Styling}>
                 Create a new accout
               </h1>
               <h3 className='text-gray-500'>or sign in with an existing account.</h3>
@@ -54,7 +62,7 @@ function SignUpPage() {
                 className={inputStyle}
               />
             </label>
-            <label htmlFor="lastName" className="mb-[0.25rem] flex flex-col">
+            <label htmlFor="lastName" className={labelStyle}>
               Last Name
               <input
                 id="lastName"
@@ -65,7 +73,7 @@ function SignUpPage() {
               />
             </label>
             <label htmlFor="email" className={labelStyle}>
-              email
+              Email
               <input
                 id="email"
                 onInput={formik.handleChange}
@@ -101,14 +109,11 @@ function SignUpPage() {
                 className={inputStyle}
               />
             </label>
-            <div className="form-buttons">
-              <button
-                type="submit"
-                className="hover:bg-black-600 w-full rounded bg-black py-3 text-white mt-[2rem]"
-              >
-                Sign up with email
-              </button>
-            </div>
+            <button
+            type="submit"
+            className={buttonStyle}>
+            Sign up with email
+            </button>
           </form>
         </div>
       </div>
