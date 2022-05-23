@@ -9,3 +9,58 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+
+model User {
+  id      Int      @id @default(autoincrement())
+  email   String   @unique
+  firstName    String
+  weight      Int
+  age         Int
+  gender     String
+  lasName   String
+  profilePic String?
+  streakCount    Int?
+  userLogs UserLog[]
+}
+
+model Workout {
+id      Int      @id @default(autoincrement())
+name String
+imgUrl  String
+exercises WorkoutLine[]
+}
+
+model Exercise {
+id      Int      @id @default(autoincrement())
+videoUrl String  
+description String 
+workouts WorkoutLine[]
+}
+
+model WorkoutLine{
+id      Int      @id @default(autoincrement())
+ sugWeight Int 
+  sugSets Int 
+  sugReps Int 
+  steps Int 
+  userlogs UserLog[] 
+  exercise Exercise @relation(fields:[exerciseId], references:[id])
+  exerciseId Int
+  workout Workout @relation(fields: [workoutId], references: [id]) 
+  workoutId Int
+
+}
+
+model UserLog{
+    id     Int     @id @default(autoincrement())
+  weight Int 
+  reps Int 
+  setNumber Int 
+  date  DateTime   @default(now())
+  user User @relation(fields: [userId], references: [id])
+  userId Int 
+  workoutLine WorkoutLine @relation(fields: [workoutLineId], references: [id])
+  workoutLineId Int 
+
+}

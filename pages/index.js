@@ -1,3 +1,5 @@
+import { signIn, signOut, useSession ,signUp } from 'next-auth/client';
+
 export default function Home() {
   return (
     <h1 className="text-3xl font-bold underline">
