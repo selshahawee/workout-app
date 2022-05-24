@@ -1,6 +1,6 @@
 import Head from "next/head";
 import { signIn, signOut, useSession } from "next-auth/react";
-
+import Header from '../components/Header'
 export default function Home() {
 const {data :session } = useSession();
 console.log(session)
@@ -9,7 +9,7 @@ console.log(session)
       <Head>
         <title>WorkOut</title>
       </Head>
-
+      <Header/>
       <nav>
         {!session? (
           <button onClick={() => signIn("google")}>google connect</button>
@@ -26,6 +26,7 @@ console.log(session)
           </>
         )}
       </nav>
+
     </>
   );
 }
