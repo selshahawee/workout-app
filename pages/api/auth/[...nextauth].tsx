@@ -14,6 +14,6 @@ export default (req, res) =>
       }),
     ],
     pages: {
-      newUser: "/signup",
+      newUser: "/signup/newuser",
     },
   });
