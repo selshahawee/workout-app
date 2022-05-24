@@ -1,8 +1,12 @@
-import React from 'react'
+import React, { Fragment } from 'react'
+import Drawer from './Drawer'
 
 function SideBar() {
   return (
-    <div>SideBar</div>
+    <div className=''>
+      <Drawer/>
+    </div>
+        
   )
 }
 

@@ -5,12 +5,10 @@ import DummyAvatar from '../images/dummy-avatar..png'
 import UserDropDown from './UserDropDown'
 function NavBar() {
 
-  const [open, setOpen] = useState(false)
-  const [dropDown, setDropDown] = useState(false)
-  const viewDropDown = () => {
-    
-  }
-  const headerContainer = 'bg-white flex flex-row p-[0.5rem] justify-between align-center'
+//   to be sent as props from the parent component const [open, setOpen] = useState(false)
+
+  
+  const headerContainer = 'bg-white flex flex-row py-[1.2rem] justify-between align-center '
 
   return (
     <div className={headerContainer}>
