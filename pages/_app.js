@@ -1,13 +1,17 @@
 import { SessionProvider } from "next-auth/react"
 import '../styles/globals.css';
-
+import ProtectedRoute from "../components/ProtectedRoute"
 export default function App({
   Component,
   pageProps: { session, ...pageProps },
 }) {
   return (
+    
     <SessionProvider session={session}>
-      <Component {...pageProps} />
+     {/* <ProtectedRoute> */}
+        <Component {...pageProps} />
+        {/* </ProtectedRoute> */}
     </SessionProvider>
+   
   )
 }
