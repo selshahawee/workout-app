@@ -10,11 +10,13 @@ function NavBar() {
   const viewDropDown = () => {
     
   }
-  const headerContainer = 'bg-white flex flex-row p-[0.5rem] justify between align center'
+  const headerContainer = 'bg-white flex flex-row p-[0.5rem] justify-between align-center'
 
   return (
     <div className={headerContainer}>
-        
+        <div>
+            bla bla bla
+        </div>
         <UserDropDown/>     
     </div>  
   )
