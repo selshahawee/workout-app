@@ -8,8 +8,9 @@ export interface Workout {
 
 export interface Exercise {
   id: string
-  videoUrl: String
-  description: String
+  name: string
+  videoUrl: string
+  description: string
   workouts: WorkoutLine[]
 }
 
@@ -29,7 +30,7 @@ export interface UserLog {
   reps: number
   setNumber: number
   date: number
-  userId: String
+  userId: string
   workoutLineId: string
 }
 
