@@ -23,7 +23,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
-, "pages/browse.js", "components/WorkOutCard.js"  ],
+, "pages/api/workout", "types"  ],
   "exclude": [
     "node_modules"
   ]
