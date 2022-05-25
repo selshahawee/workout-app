@@ -3,6 +3,7 @@ import { Menu, Transition } from '@headlessui/react'
 import Image from 'next/image'
 import DummyAvatar from '../images/dummy-avatar..png'
 import { profile } from 'console'
+import { signIn, signOut, useSession } from "next-auth/react";
 function UserDropDown() {
   const avatarWrapper = 'h-[2.5rem] w-[2.5rem] relative rounded-full'
   const avatar = 'rounded-full'
@@ -26,14 +27,15 @@ function UserDropDown() {
       },
     }
   ]
+  const {data :session } = useSession();
   const authedUserName = 'mx-[1rem] mt-[0.2rem] mb-0 text-xl font-semibold'
   return (
     <Menu>
       <Menu.Button className={authedUser}>
-        <p className={authedUserName}>username</p>
+        <p className={authedUserName}>{session.user.name}</p>
         <div className={avatarWrapper}>
           <Image
-            src={DummyAvatar}
+            src={session.user.image}
             alt="Avatar"
             layout="fill"
             className={avatar}
@@ -63,7 +65,7 @@ function UserDropDown() {
             {({ active }) => (
                 <a
                 className={`${active && ''}`}
-                href="/account-settings"
+                onClick={signOut}
                 >
                    Sign out
                 </a>

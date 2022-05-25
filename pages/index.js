@@ -1,6 +1,7 @@
 import Head from "next/head";
 import { signIn, signOut, useSession } from "next-auth/react";
 import SignInPage from "./login"
+import Header from '../components/Header'
 export default function Home() {
 const {data :session } = useSession();
 console.log(session)
@@ -15,6 +16,7 @@ console.log(session)
           <SignInPage/>
         ) : (
           <>
+          <Header/>
             <span>{session.user.name}</span>
             {session.user.image && (
               <img
