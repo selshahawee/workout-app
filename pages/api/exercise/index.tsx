@@ -25,6 +25,7 @@ async function getExercise(req, res) {
   res.status(200).json(exercises)
 }
 
+
 async function createExercise(req, res) {
   try {
     const { name, description, videoUrl } = req.body

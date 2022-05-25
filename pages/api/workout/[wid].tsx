@@ -7,7 +7,7 @@ export default async function handle(req, res) {
   if (req.method === 'GET') {
       const {wid}=req.query
     const workout = await prisma.workout.findUnique({
-        where:{id:+wid}})
+        where:{id:+wid},include:{exercises:true}})
     if (!workout) {
       res.status(400).json({ msg: 'no workout found' })
     }
