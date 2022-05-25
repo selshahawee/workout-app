@@ -7,13 +7,16 @@ import Image from 'next/image'
 
 function Browse () {
 
-    const imageContainer = "relative w-80 h-[27rem] rounded-2xl mb-[0.75rem] rounded-2xl border"
+    const imageContainer = "relative w-80 h-[27rem] rounded-2xl mb-[0.75rem] rounded-2xl"
     const caption = "transition duration-150 ease-out hover:ease-in my-4 text-gray-600"
-    const card = "flex-col justify-center border transition ease-in-out delay-150 hover:-translate-y-1 hover:bg-white duration-300"
+    const card = "flex-col justify-center transition ease-in-out delay-150 hover:-translate-y-1 hover:bg-white duration-300"
     const browserWrapper = 'flex flex-col justify-center align-center'
     const cardTextContainer = ''
     const workoutName = 'font-bold'
     const workoutPic = 'w-full object-fill'
+    const browserTitle = 'font-extrabold self-center mt-[3rem] text-[3rem] text-center mb-[0.25rem] sm:text-[1.5rem] md:text-[1.5rem] lg:text-[3rem] p-[1rem]'
+    const browserSubTitle = 'font-semibold text-gray-600 mb-[1.5rem] self-center text-[1.2rem]'
+    const list = 'grid sm:grid-cols-1  md:grid-cols-2 lg:grid-cols-3 grid-flow-rows gap-4 self-center'
 
     const fetcher = (url) => axios.get(url).then((res) => res.data)
     const { data , error } = useSWR('/api/workout', fetcher)
@@ -27,11 +30,11 @@ function Browse () {
     
     return (
         <div className={browserWrapper}>
-            <h1 className='font-extrabold self-center mt-[3rem] text-[3rem] text-center mb-[0.5rem] text-[1.5rem] p-[1rem]'>
+            <h1 className={browserTitle}>
                 Browse our carefully curated workouts
             </h1>
-
-            <ul className='grid sm:grid-cols-1  md:grid-cols-2 lg:grid-cols-3 grid-flow-rows gap-4 self-center' >
+            <p className={browserSubTitle}>designed to push you right to the peak</p>
+            <ul className={list}>
                 {
                     data?.map((workout) => (
                         <li key={workout.id} className={card}>
