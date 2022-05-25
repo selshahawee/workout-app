@@ -50,14 +50,14 @@ console.log({workoutId, userId})
 
  async function updateGymDay(req, res) {
 
-    const { uid } = req.body
-    const user = await prisma.gymDay.findMany({
-      where: { userId: uid },
-    })
+    // const { uid } = req.body
+    // const user = await prisma.gymDay.findMany({
+    //   where: { userId: uid },
+    // })
 
-    if (!user) {
-      res.status(400).json({ msg: `userID '${uid}' does not exist` })
-    }
-    res.status(200).json(user)
+    // if (!user) {
+    //   res.status(400).json({ msg: `userID '${uid}' does not exist` })
+    // }
+    // res.status(200).json(user)
   }
 
