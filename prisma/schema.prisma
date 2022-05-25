@@ -54,6 +54,8 @@ model UserLog {
   userId        String
   workoutLine   WorkoutLine @relation(fields: [workoutLineId], references: [id])
   workoutLineId Int
+  gymDay        GymDay      @relation(fields: [gymdayId], references: [id])
+  gymdayId      String
 
 }
 
@@ -89,13 +91,14 @@ model GymDay {
   dateCreated   DateTime @default(now())
   activeWorkout Boolean
   workoutStart  DateTime @default(now())
-  workoutFinish DateTime
+  workoutFinish DateTime ? 
 
   workout   Workout @relation(fields: [workoutId], references: [id])
   workoutId Int
 
-  user   User   @relation(fields: [userId], references: [id]) //many GymDays to one user
-  userId String
+  user    User      @relation(fields: [userId], references: [id]) //many GymDays to one user
+  userId  String
+  UserLog UserLog[]
 }
 
 model User {
