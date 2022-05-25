@@ -1,6 +1,6 @@
 import Head from "next/head";
 import { signIn, signOut, useSession } from "next-auth/react";
-
+import SignInPage from "./login"
 export default function Home() {
 const {data :session } = useSession();
 console.log(session)
@@ -12,7 +12,7 @@ console.log(session)
 
       <nav>
         {!session? (
-          <button onClick={() => signIn("google")}>google connect</button>
+          <SignInPage/>
         ) : (
           <>
             <span>{session.user.name}</span>
