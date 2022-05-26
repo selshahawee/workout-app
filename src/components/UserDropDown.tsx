@@ -50,12 +50,12 @@ function UserDropDown() {
             </Menu.Item>
             <Menu.Item as = 'li' className={signOutItem} >
             {({ active }) => (
-                <a
+                <button
                 className={`${active}`}
                 onClick={()=>signOut()}
                 >
                    Sign out
-                </a>
+                </button>
             )}
             </Menu.Item>
         </Menu.Items>
