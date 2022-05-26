@@ -17,14 +17,6 @@ console.log(session)
         ) : (
           <>
           <Header/>
-            <span>{session.user.name}</span>
-            {session.user.image && (
-              <img
-                src={session.user.image}
-                style={{ width: "25px", borderRadius: "50%" }}
-              />
-            )}
-            <button onClick={signOut}>Sign Out</button>
           </>
         )}
       </nav>

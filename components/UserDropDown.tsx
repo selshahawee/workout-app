@@ -13,20 +13,7 @@ function UserDropDown() {
     'flex flex-col justify-center align-center-1rem rounded-2xl border w-[10rem] absolute right-0 mt-14 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none mr-[1rem]'
   const profileItem = 'px-5 hover:bg-black hover:text-white hover:font-semibold rounded-t-md'
     const signOutItem = 'px-5 hover:bg-black hover:text-white hover:font-semibold rounded-b-md'
-    const menuItemsData = [
-    {
-      name: 'Profile',
-      action: () => {
-          console.log(1)
-      },
-    },
-    {
-      name: 'Sign out',
-      action: () => {
-        console.log(2)
-      },
-    }
-  ]
+    
   const {data :session } = useSession();
   const authedUserName = 'mx-[1rem] mt-[0.2rem] mb-0 text-xl font-semibold'
   return (
@@ -54,7 +41,7 @@ function UserDropDown() {
           <Menu.Item as = 'li' className={profileItem}>
             {({ active }) => (
                 <a
-                className={`${active && ''}`}
+                className={`${active}`}
                 href="/account-settings"
                 >
                    Profile
@@ -64,25 +51,13 @@ function UserDropDown() {
             <Menu.Item as = 'li' className={signOutItem} >
             {({ active }) => (
                 <a
-                className={`${active && ''}`}
-                onClick={signOut}
+                className={`${active}`}
+                onClick={()=>signOut()}
                 >
                    Sign out
                 </a>
             )}
             </Menu.Item>
-          {/* {menuItemsData.map((item) => (
-            <Menu.Item
-              as="li"
-              className="px-10  hover:bg-black "
-            >
-              {({ active }) => (
-                <a className={`${active && 'text-white font-semibold bg-black'}`} onClick={() => item.action()}>
-                  {item.name}               
-                </a>
-              )}
-            </Menu.Item>
-          ))} */}
         </Menu.Items>
       </Transition>
     </Menu>
