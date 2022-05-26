@@ -1,4 +1,4 @@
-import CalenderComp from '../components/CalenderComp'
+import CalenderComp from 'components/CalenderComp'
 import React from 'react'
 
 function Calender() {
