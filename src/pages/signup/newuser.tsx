@@ -1,7 +1,7 @@
 import React from 'react'
 import { Field, FormikProvider, useFormik } from 'formik'
 import Link from 'next/link'
-import Logo from '../../images/logo.png'
+import Logo from 'assets/images/logo.png'
 import Image from 'next/image'
 import SignUpPage from './index'
 import axios from "axios";
