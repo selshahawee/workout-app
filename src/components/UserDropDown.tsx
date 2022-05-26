@@ -1,7 +1,8 @@
 import React from 'react'
 import { Menu, Transition } from '@headlessui/react'
 import Image from 'next/image'
-import DummyAvatar from '../images/dummy-avatar..png'
+// import DummyAvatar from 'assets/images/download'
+import dummy from 'assets/images/download.png'
 import { profile } from 'console'
 import { signIn, signOut, useSession } from "next-auth/react";
 function UserDropDown() {
@@ -19,10 +20,10 @@ function UserDropDown() {
   return (
     <Menu>
       <Menu.Button className={authedUser}>
-        <p className={authedUserName}>{session.user.name}</p>
+        <p className={authedUserName}>{session?.user.name}</p>
         <div className={avatarWrapper}>
           <Image
-            src={session.user.image}
+            src={session ? session.user.image : dummy}
             alt="Avatar"
             layout="fill"
             className={avatar}
