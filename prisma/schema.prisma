@@ -1,6 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -11,37 +8,32 @@ datasource db {
 }
 
 model Workout {
-  id        Int           @id @default(autoincrement())
-  name      String
-  imgUrl    String
-  exercises WorkoutLine[]
-  gymDays   GymDay[]
+  id           Int           @id @default(autoincrement())
+  name         String
+  imgUrl       String
+  gymDays      GymDay[]
+  workoutLines WorkoutLine[]
 }
 
 model Exercise {
-  id          Int   @id @default(autoincrement())
+  id          Int           @id @default(autoincrement())
   name        String
   description String
   videoUrl    String
   workouts    WorkoutLine[]
-
 }
 
 model WorkoutLine {
-  id        Int @id @default(autoincrement())
-  sugWeight Int
-  sugSets   Int
-  sugReps   Int
-  steps     Int
-
-  exercise   Exercise @relation(fields: [exerciseId], references: [id])
+  id         Int       @id @default(autoincrement())
+  sugWeight  Int
+  sugSets    Int
+  sugReps    Int
+  steps      Int
   exerciseId Int
-
-  workout   Workout @relation(fields: [workoutId], references: [id])
-  workoutId Int
-
-  userlogs UserLog[]
-
+  workoutId  Int
+  exercise   Exercise  @relation(fields: [exerciseId], references: [id])
+  workout    Workout   @relation(fields: [workoutId], references: [id])
+  userlogs   UserLog[]
 }
 
 model UserLog {
@@ -50,13 +42,12 @@ model UserLog {
   reps          Int
   setNumber     Int
   date          DateTime    @default(now())
-  user          User        @relation(fields: [userId], references: [id]) //many userlogs to one user
   userId        String
-  workoutLine   WorkoutLine @relation(fields: [workoutLineId], references: [id])
   workoutLineId Int
-  gymDay        GymDay      @relation(fields: [gymdayId], references: [id])
   gymdayId      String
-
+  gymDay        GymDay      @relation(fields: [gymdayId], references: [id])
+  user          User        @relation(fields: [userId], references: [id])
+  workoutLine   WorkoutLine @relation(fields: [workoutLineId], references: [id])
 }
 
 model Account {
@@ -65,15 +56,14 @@ model Account {
   type              String
   provider          String
   providerAccountId String
-  refresh_token     String? @db.Text
-  access_token      String? @db.Text
+  refresh_token     String?
+  access_token      String?
   expires_at        Int?
   token_type        String?
   scope             String?
-  id_token          String? @db.Text
+  id_token          String?
   session_state     String?
-
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([provider, providerAccountId])
 }
@@ -87,18 +77,16 @@ model Session {
 }
 
 model GymDay {
-  id            String   @id @default(cuid())
-  dateCreated   DateTime @default(now())
+  id            String    @id @default(cuid())
+  dateCreated   DateTime  @default(now())
   activeWorkout Boolean
-  workoutStart  DateTime @default(now())
-  workoutFinish DateTime ? 
-
-  workout   Workout @relation(fields: [workoutId], references: [id])
-  workoutId Int
-
-  user    User      @relation(fields: [userId], references: [id]) //many GymDays to one user
-  userId  String
-  UserLog UserLog[]
+  workoutStart  DateTime  @default(now())
+  workoutFinish DateTime?
+  workoutId     Int
+  userId        String
+  user          User      @relation(fields: [userId], references: [id])
+  workout       Workout   @relation(fields: [workoutId], references: [id])
+  UserLog       UserLog[]
 }
 
 model User {
@@ -107,18 +95,18 @@ model User {
   email         String?   @unique
   emailVerified DateTime?
   image         String?
- 
-
-
+  firstName     String?   @db.VarChar(25)
+  lastName      String?   @db.VarChar(25)
+  password      String?   @db.VarChar(50)
   gender        String?
   age           Int?
   weight        Int?
   height        Int?
   streakCount   Int?
   accounts      Account[]
-  sessions      Session[]
   gymDays       GymDay[]
-  userLogs      UserLog[] //one user with userlogs
+  sessions      Session[]
+  userLogs      UserLog[]
 }
 
 model VerificationToken {

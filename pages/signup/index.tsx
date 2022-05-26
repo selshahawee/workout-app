@@ -4,6 +4,8 @@ import Link from 'next/link'
 import Logo from '../../images/logo.png'
 import Image from 'next/image'
 import { signIn, signOut, useSession } from 'next-auth/react'
+
+
 function SignUpPage() {
 
   const h1Styling = "mt-[1rem] mb-[0.2rem] text-3xl font-bold"

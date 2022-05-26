@@ -39,6 +39,7 @@ async function updateWorkoutLine(req, res) {
     const updateWorkoutLine = await prisma.workoutLine.update({
       where: { id: wlid },
       data: {
+        
         sugWeight,
         sugSets,
         sugReps,
