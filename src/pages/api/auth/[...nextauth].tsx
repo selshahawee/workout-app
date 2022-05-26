@@ -9,6 +9,8 @@ export default (req, res) =>
   NextAuth(req, res, {
     secret: process.env.NEXTAUTH_SECERT,
     adapter: PrismaAdapter(prisma),
+    secret: process.env.NEXTAUTH_SECERT,
+
     providers: [
       GoogleProvider({
         clientId: process.env.GOOGLE_ID,

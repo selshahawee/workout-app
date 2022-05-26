@@ -1,12 +1,13 @@
+import { Interface } from "readline"
 
 export interface Workout {
   id: string
   name: String
   imgUrl: String
-
+  exercises?: WorkoutLine[]
+  gymDays?: GymDay[]
   exercises: WorkoutLine[]
   gymDays: GymDay[]
-
 }
 
 export interface Exercise {
