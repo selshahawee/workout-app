@@ -6,7 +6,7 @@ import Layout from '../components/Layout'
 import Browse from './browse';
 
 export default function Home() {
-const {data :session } = useSession();
+const {data: session} = useSession();
 console.log(session)
   return (
     <>
@@ -18,11 +18,16 @@ console.log(session)
         {!session? (
           <SignInPage/>
         ) : (
-          // <Layout>
-          //   <Browse/>
-          // </Layout>
-          <Header/>
+          <Layout>
+            <Browse/>
+
+          </Layout>
+
+          // <Header/>
         )}
+        {/* <Layout>
+          <Browse/>
+        </Layout> */}
       </nav>
     </>
   );
