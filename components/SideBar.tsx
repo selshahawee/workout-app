@@ -9,12 +9,12 @@ function SideBar() {
     
 
   return (
-    <aside className={sideBarWrapper}>
+    <div className={sideBarWrapper}>
         <div className={logoWrapper}>
             <Image src={Logo} alt="brand" layout="fill" objectFit="contain" />
         </div>
         <Navigator/>
-    </aside>
+    </div>
   )
 }
 

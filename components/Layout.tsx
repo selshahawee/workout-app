@@ -1,5 +1,5 @@
 import { Fragment, ReactElement, ReactNode } from 'react'
-import Drawer from './Drawer'
+import Footer from './Footer'
 
 import Header from './Header'
 import SideBar from './SideBar'
@@ -11,7 +11,7 @@ type ChildrenProps = {
 
 function HomeLayout({ children }: ChildrenProps) {
 
-const grid = ''
+const grid = 'grid lg:grid-cols-3 md:grid-cols-1 '
 const headerRow = ''
 const asideColumn = ''
 const mainBlock = ''
@@ -35,9 +35,9 @@ const footerRow = ''
         <SideBar />
       </aside>
       <main className={mainBlock}>{children}</main>
-      {/* <footer>
-        footer
-      </footer> */}
+      <footer className={footerRow}>
+        <Footer/>
+      </footer>
     </div>
   )
 }

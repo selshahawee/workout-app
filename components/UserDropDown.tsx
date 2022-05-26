@@ -11,7 +11,7 @@ function UserDropDown() {
     'flex flex-row justify-center align center absolute right-0 mx-[1.5rem] mb-3'
   const menuItemsList =
     'flex flex-col justify-center align-center-1rem rounded-2xl border w-[10rem] absolute right-0 mt-14 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none mr-[1rem]'
-  const profileItem = 'px-5 hover:bg-black hover:text-white hover:font-semibold rounded-t-md'
+  const profileItem = 'px-5 hover:bg-black hover:text-white '
     const signOutItem = 'px-5 hover:bg-black hover:text-white hover:font-semibold rounded-b-md'
     
   const {data :session } = useSession();
@@ -41,7 +41,7 @@ function UserDropDown() {
           <Menu.Item as = 'li' className={profileItem}>
             {({ active }) => (
                 <a
-                className={`${active}`}
+                className={`${active} && 'font-semibold rounded-t-md'`}
                 href="/account-settings"
                 >
                    Profile
