@@ -7,7 +7,6 @@ import Image from 'next/image'
 import { useRouter } from 'next/router'
 
 export default function Browse() {
-   
   const imageContainer =
     'relative w-80 h-[27rem] rounded-2xl mb-[0.75rem] rounded-2xl border'
   const caption =
@@ -32,11 +31,9 @@ export default function Browse() {
     { name: 'hey', key: '4' },
   ]
 
- if (!data) {
-   return (
-       <h1>Loading..</h1>
-   )
- }
+  if (!data) {
+    return <h1>Loading..</h1>
+  }
   return (
     <div className={browserWrapper}>
       <h1 className="mt-[3rem] mb-[0.5rem] self-center p-[1rem] text-center text-[3rem] text-[1.5rem] font-extrabold">
@@ -63,11 +60,21 @@ export default function Browse() {
               <p>{exercise.exercise.sugSets}</p>
 
               <div>
-                {Array.from(Array(exercise.exercise.sugSets))
-                  .keys()
-                  .map((input: number) => (
-                    <p key={input}>{input}</p>
+                <form>
+                  {Array.from(Array(exercise.sugSets).keys()).map((e) => (
+                    <div>
+                      <label>
+                        {exercise.sugSets}
+                        <input key={e} id={exercise.sugReps} />
+                      </label>
+                      <label>
+                        {exercise.sugSets}
+                        <input key={e} id={exercise.sugReps} />
+                      </label>
+                      <button></button>
+                    </div>
                   ))}
+                </form>
               </div>
             </li>
           ))}
