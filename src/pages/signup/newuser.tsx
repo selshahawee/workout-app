@@ -1,11 +1,19 @@
 import React from 'react'
 import { Field, FormikProvider, useFormik } from 'formik'
 import Link from 'next/link'
-import Logo from '../../images/logo.png'
+import Logo from 'assets/images/logo.png'
 import Image from 'next/image'
 import SignUpPage from './index'
+import axios from "axios";
 import { signIn, signOut, useSession } from 'next-auth/react'
+import { useRouter} from "next/router";
+
 function NewUser() {
+
+  const router = useRouter()
+
+
+
   const h1Styling = 'mt-[1rem] mb-[0.2rem] text-3xl font-bold'
 
   const labelStyle = 'mb-[0.5rem] flex flex-col font-bold'
@@ -21,20 +29,26 @@ function NewUser() {
   const { data: session } = useSession()
   const formik = useFormik({
     initialValues: {
-      firstName: '',
-      lastName: '',
+     
       gender: '',
-      weight: '',
-      height: '',
+      weight: 0,
+      height: 0,
+      age:0,
     },
+
+    
 
     onSubmit: async (values) => {
       formik.resetForm()
-        // (...values, session.user.email);
-      //   navigate:("/");
-      //bg-[url('/img/hero-pattern.svg')]"
+      const updateUser = await axios.put(`/api/user`, values)
+      console.log(updateUser)
+     router.push('/browse')
+     
     },
   })
+
+  
+
   return (
       <>
           <nav>
@@ -60,23 +74,14 @@ function NewUser() {
                 </div>
               </div>
               <form onSubmit={formik.handleSubmit}>
-                <label htmlFor="firstName" className={labelStyle}>
-                  First Name
+              
+                <label htmlFor="age" className={labelStyle}>
+                  Age
                   <input
-                    id="firstName"
+                    id="age"
                     onInput={formik.handleChange}
-                    value={formik.values.firstName}
-                    placeholder="i.e John"
-                    className={inputStyle}
-                  />
-                </label>
-                <label htmlFor="lastName" className={labelStyle}>
-                  Last Name
-                  <input
-                    id="lastName"
-                    onInput={formik.handleChange}
-                    value={formik.values.lastName}
-                    placeholder="i.e Smith"
+                    value={formik.values.age}
+                    
                     className={inputStyle}
                   />
                 </label>
@@ -89,7 +94,8 @@ function NewUser() {
                     value={formik.values.gender}
                     className={selectStyle}
                     onSelect={formik.handleChange}
-                  >
+                      >
+                        <option value=""></option>
                     <option value="M">Male</option>
                     <option value="F">Female</option>
                   </Field>
@@ -114,7 +120,7 @@ function NewUser() {
                     className={inputStyle}
                   />
                 </label>
-                <button type="submit" className={buttonStyle}>
+                <button type="submit" className={buttonStyle} onClick={()=>formik.handleSubmit}>
                   Submit Information 
                 </button>
               </form>

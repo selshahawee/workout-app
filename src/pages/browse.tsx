@@ -18,6 +18,7 @@ function Browse () {
     const browserSubTitle = 'font-semibold text-gray-600 mb-[1.5rem] self-center text-[1.2rem]'
     const list = 'grid sm:grid-cols-1  md:grid-cols-2 lg:grid-cols-3 grid-flow-rows gap-4 self-center'
 
+
     const fetcher = (url) => axios.get(url).then((res) => res.data)
     const { data , error } = useSWR('/api/workout', fetcher)
     console.log(data)

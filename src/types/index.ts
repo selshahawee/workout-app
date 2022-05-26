@@ -6,6 +6,8 @@ export interface Workout {
   imgUrl: String
   exercises?: WorkoutLine[]
   gymDays?: GymDay[]
+  exercises: WorkoutLine[]
+  gymDays: GymDay[]
 }
 
 export interface Exercise {
@@ -46,8 +48,3 @@ export interface GymDay {
   userId: string
 }
 
-// export interface AppStateTypes {
-//   workouts:Workout[]
-  
-
-// }

@@ -5,14 +5,17 @@ const prisma = new PrismaClient()
 
 export default async function handle(req, res) {
   if (req.method === 'GET') {
-      const {wid}=req.query
-    const workout = await prisma.workout.findUnique({
-        where:{id:+wid}})
-    if (!workout) {
-      res.status(400).json({ msg: 'no workout found' })
+
+    const workouts = await prisma.workout.findMany({
+      include: { exercises: true },
+    })
+
+    if (workouts.length == 0) {
+      res.status(400).json({ msg: 'no workouts' })
     }
-    res.status(200).json(workout)
+    res.status(200).json(workouts)
   } else if (req.method === 'POST') {
+
     try {
       const { name, imgUrl } = req.body
       const workout = await prisma.workout.create({
