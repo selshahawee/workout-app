@@ -5,8 +5,7 @@ import Image from 'next/image'
 function Dashboard() {
   const avatarWrapper = 'h-[2.5rem] w-[2.5rem] relative rounded-full'
   const avatar = 'rounded-full'
-  const authedUserName = 'mx-[1rem] mt-[0.2rem] mb-0 text-xl font-semibold'
-  const subText = ''
+
   const { data: session } = useSession()
 
   return (
@@ -21,10 +20,7 @@ function Dashboard() {
                 layout="fill"
                 className={avatar}
               />
-              <div className='flex flex-col justify-start align-center'>
-              <h2 className={authedUserName}>{`Hello ${session?.user.name}.`}</h2>
-              <p></p>
-              </div>
+              <h1></h1>
             </div>
           </div>
         </div>
