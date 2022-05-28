@@ -4,6 +4,7 @@ import SignInPage from "./login"
 import Header from '../components/Header'
 import Layout from '../components/Layout'
 import Browse from './browse';
+import Dashboard from "./dashboard";
 
 export default function Home() {
 const {data: session} = useSession();
@@ -19,7 +20,7 @@ console.log(session)
           <SignInPage/>
         ) : (
           <Layout>
-            <Browse/>
+            <Dashboard/>
 
           </Layout>
 
