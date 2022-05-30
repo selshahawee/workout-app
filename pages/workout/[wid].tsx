@@ -5,6 +5,8 @@ import axios from 'axios'
 import Link from 'next/link'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
+import { useSession } from 'next-auth/react'
+
 
 export default function Browse() {
   const imageContainer =
@@ -21,9 +23,21 @@ export default function Browse() {
   const router = useRouter()
   const { wid } = router.query
 
+// const { data: session } = useSession()
+
+// const userEmail = session.user.email
+// const payload = { userEmail }
+
+
   const fetcher = (url) => axios.get(url).then((res) => res.data)
   const { data, error } = useSWR('/api/workout/' + wid, fetcher)
   console.log(data)
+
+
+const gymday = useSWR('/api/user/gymday', fetcher)
+console.log(gymday)
+
+
   const test = [
     { name: 'hello', key: '1' },
     { name: 'hi', key: '2' },
@@ -39,6 +53,7 @@ export default function Browse() {
       <h1 className="mt-[3rem] mb-[0.5rem] self-center p-[1rem] text-center text-[3rem] text-[1.5rem] font-extrabold">
         {data.name}
       </h1>
+      <h2>{data.description}</h2>
       {data.exercises.length == 0 ? (
         <h1>no exercise</h1>
       ) : (
@@ -72,14 +87,20 @@ export default function Browse() {
                         <input key={e} value={exercise.sugReps} />
                       </label>
                       <label>
-                        <input key={e} value={exercise.sugReps} />
+                        <input key={e} value={exercise.sugWeight} />
                       </label>
                       <input
                         type="hidden"
-                        name="workLineId"
-                        value={exercise.workoutId}
+                        name="workoutLineId"
+                        value={exercise.id}
+                      />
+                      <input
+                        type="hidden"
+                        name="workoutId"
+                        value={exercise.exerciseId}
                       />
                       <button>done</button>
+                    
                     </div>
                   ))}
                 </form>

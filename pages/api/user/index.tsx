@@ -21,7 +21,7 @@ async function updateUserInfo(req, res) {
       const userEmail = session.user.email
       const { weight, height, age, gender } =req.body
       console.log(req.body)
-      const updateUserInfo = await prisma.user.updateMany({
+      const updateUserInfo = await prisma.user.update({
         where: { email: userEmail},
         data: {
           weight:+weight,
