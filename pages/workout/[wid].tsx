@@ -57,21 +57,29 @@ export default function Browse() {
               </div>
               <h2>{exercise.exercise.name}</h2>
               <p>{exercise.exercise.description}</p>
-              <p>{exercise.exercise.sugSets}</p>
-
+              <hr />
+              <p>
+                {' '}
+                {exercise.sugSets} sets x {exercise.sugReps} reps
+              </p>
+              <hr />
               <div>
                 <form>
                   {Array.from(Array(exercise.sugSets).keys()).map((e) => (
                     <div>
+                      <span>set {e + 1}: </span>
                       <label>
-                        {exercise.sugSets}
-                        <input key={e} id={exercise.sugReps} />
+                        <input key={e} value={exercise.sugReps} />
                       </label>
                       <label>
-                        {exercise.sugSets}
-                        <input key={e} id={exercise.sugReps} />
+                        <input key={e} value={exercise.sugReps} />
                       </label>
-                      <button></button>
+                      <input
+                        type="hidden"
+                        name="workLineId"
+                        value={exercise.workoutId}
+                      />
+                      <button>done</button>
                     </div>
                   ))}
                 </form>

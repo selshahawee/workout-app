@@ -11,6 +11,7 @@ model Workout {
   id        Int           @id @default(autoincrement())
   name      String
   imgUrl    String
+  description    String?
   gymDays   GymDay[]
   exercises WorkoutLine[]
 }
