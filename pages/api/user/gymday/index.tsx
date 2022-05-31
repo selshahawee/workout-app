@@ -20,13 +20,10 @@ export default async function handle(req, res) {
   }
 }
 
-
-    
-
 async function getGymDays(req, res) {
-// const session = await getSession({ req })
-// const userEmail = session.user.email
-const userEmail='emad@elkadys.com'
+  // const session = await getSession({ req })
+  // const userEmail = session.user.email
+  const userEmail = 'emad@elkadys.com'
 
   const user = await prisma.user.findUnique({
     where: { email: userEmail },
@@ -35,9 +32,9 @@ const userEmail='emad@elkadys.com'
     res.status(400).json({ msg: `userID '${userEmail}' does not exist` })
   }
 
-   if (!user.activeGymDay) {
-     res.status(400).json({ msg: 'user has no active GymDay' })
-   }
+  if (!user.activeGymDay) {
+    res.status(400).json({ msg: 'user has no active GymDay' })
+  }
 
   const activeGymDay = await prisma.gymDay.findUnique({
     where: { id: user.activeGymDay },
@@ -81,13 +78,15 @@ async function createGymDay(req, res) {
     },
   })
 
-  res.status(200).json(gymDay)
+  res
+    .status(200)
+    .json({
+      msg: `GymDay started on ${gymDay.dateCreated} for workout id ${gymDay.workoutId}`,
+      gymDay: gymDay,
+    })
 }
 
-
 //------------------------------//
-
-
 
 async function updateGymDay(req, res) {
   // const session = await getSession({ req })
@@ -113,12 +112,16 @@ async function updateGymDay(req, res) {
   })
 
   const removeUserActiveGymDay = await prisma.user.update({
-    where: {email:userEmail },
+    where: { email: userEmail },
     data: {
       activeGymDay: null,
       activeWorkoutID: null,
     },
   })
 
-  res.status(200).json({ msg: `GymDay concluded successfully on ${closeGymDay.workoutFinish}` })
+  res
+    .status(200)
+    .json({
+      msg: `GymDay concluded successfully on ${closeGymDay.workoutFinish}`,
+    })
 }
