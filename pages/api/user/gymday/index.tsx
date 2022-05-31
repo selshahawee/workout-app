@@ -19,14 +19,16 @@ export default async function handle(req, res) {
       break
   }
 }
-
+    // const session = await getSession({ req })
+    // const userEmail = session.user.email
+    const userEmail = 'emad@elkadys.com'
 async function getGymDays(req, res) {
   // const { userId } = req.body
   // const user = await prisma.gymDay.findMany({
   //   where: { userId: uid },
   // })
-    const session = await getSession({ req })
-    const userEmail = session.user.email
+
+    
   const user = await prisma.user.findUnique({
     where: { email: userEmail },
   })
@@ -37,24 +39,23 @@ async function getGymDays(req, res) {
    if (!user.activeGymDay) {
      res.status(400).json({ msg: 'user has no active GymDay' })
    }
-
   const activeGymDay = await prisma.gymDay.findUnique({
-    where: { id: user.activeGymDay },
+    where: { id:user.activeGymDay}
   })
 
-  res.status(200).json(activeGymDay)
+  res.status(200).json( activeGymDay)
 }
 
 async function createGymDay(req, res) {
   const { workoutId, userId } = req.body
-  console.log({ workoutId, userId })
+  
 
   const user = await prisma.user.findUnique({
-    where: { id: userId },
+    where: { email: userEmail },
   })
 
   if (!user) {
-    res.status(400).json({ msg: `userID '${userId}' does not exist` })
+    res.status(400).json({ msg: `userID '${userEmail}' does not exist` })
   }
   if (user.activeGymDay) {
     res
@@ -79,13 +80,14 @@ async function createGymDay(req, res) {
   res.status(200).json(gymDay)
 }
 
+
+
 async function updateGymDay(req, res) {
   console.log(req.method)
-  const { userId } = req.body
-  console.log({ userId })
+  
 
   const user = await prisma.user.findUnique({
-    where: { id: userId },
+    where: { email: userEmail },
   })
 
   if (!user) {
@@ -103,12 +105,14 @@ async function updateGymDay(req, res) {
   })
 
   const removeUserActiveGymDay = await prisma.user.update({
-    where: { id: userId },
+    where: { email: userEmail },
     data: {
       activeGymDay: null,
       activeWorkoutID: null,
     },
   })
 
-  res.status(200).json({ msg: 'success' })
+  res
+    .status(200)
+    .json({ msg: `Gymday concluded on '${closeGymDay.workoutFinish}' see you next time :)` })
 }
