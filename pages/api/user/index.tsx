@@ -23,7 +23,7 @@ async function updateUserInfo(req, res) {
       console.log(req.body)
 
       const updateUserInfo = await prisma.user.update({
-n
+
         where: { email: userEmail},
         data: {
           weight:+weight,
