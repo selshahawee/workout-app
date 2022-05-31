@@ -12,7 +12,7 @@ function Dashboard() {
   const wrapper = 'mt-[1rem] border flex flex-col rounded-2xl p-[0.5rem] bg-white'
   const headButtons = 'mx-[0.5rem] my-[0.5rem] bg-white text-black border rounded-2xl p-[0.6rem] transition ease-in-out delay-150 hover:bg-black hover:text-white hover:scale-105 duration-300 ...'
   
-  const { data: session } = useSession()
+  const { data: session, status } = useSession()
   
   const bgColors = ['bg-blue-500','bg-green-700','bg-yellow-600','bg-purple-700','bg-red-700']
   
@@ -52,6 +52,8 @@ function Dashboard() {
       weight: '20lbs'
     },
   ]
+  
+
 
   return (
     <div className="flex flex-col p-[1rem] justify-center border">
@@ -61,7 +63,7 @@ function Dashboard() {
 
             <div className={avatarWrapper}>
               <Image
-                src={session.user.image}
+                src={session?.user.image}
                 alt="Avatar"
                 layout="fill"
                 className={avatar}
@@ -69,7 +71,7 @@ function Dashboard() {
 
             </div> 
             <div className='flex flex-col items-start justify-start ml-5'>
-              <h3 className='text-[1.7rem] font-bold'>{`Hello, ${session.user.name}.`}</h3>
+              <h3 className='text-[1.7rem] font-bold'>{`Hello, ${session?.user.name}.`}</h3>
               <p>streaks</p>
             </div>
           </div>
