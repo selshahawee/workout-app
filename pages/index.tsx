@@ -5,7 +5,7 @@ import Header from '../components/Header'
 import Layout from '../components/Layout'
 import Browse from './browse';
 import Dashboard from "./dashboard";
-
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 export default function Home() {
 const {data: session} = useSession();
 console.log(session)
@@ -21,14 +21,9 @@ console.log(session)
         ) : (
           <Layout>
             <Dashboard/>
-
+            <Browse/>
           </Layout>
-
-          // <Header/>
         )}
-        {/* <Layout>
-          <Browse/>
-        </Layout> */}
       </nav>
     </>
   );

@@ -6,6 +6,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 import { useFormik } from 'formik'
+import { Checkbox } from '@mui/material'
 
 function WorkoutList () {
   const imageContainer =
@@ -65,7 +66,7 @@ function WorkoutList () {
               <div>
                 <form>
                   {Array.from(Array(exercise.sugSets).keys()).map((e) => (
-                    <div>
+                    <div key={e}>
                       <label>
                         {exercise.sugSets}
                         <input key={e} id={exercise.sugReps} />
@@ -74,7 +75,7 @@ function WorkoutList () {
                         {exercise.sugSets}
                         <input key={e} id={exercise.sugReps} />
                       </label>
-                      <button></button>
+                      <Checkbox/>
                     </div>
                   ))}
                 </form>
