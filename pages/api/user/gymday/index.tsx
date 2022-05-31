@@ -19,11 +19,15 @@ export default async function handle(req, res) {
       break
   }
 }
-
+    // const session = await getSession({ req })
+    // const userEmail = session.user.email
+    const userEmail = 'emad@elkadys.com'
 async function getGymDays(req, res) {
+
   // const session = await getSession({ req })
   // const userEmail = session.user.email
   const userEmail = 'emad@elkadys.com'
+
 
   const user = await prisma.user.findUnique({
     where: { email: userEmail },
@@ -32,31 +36,37 @@ async function getGymDays(req, res) {
     res.status(400).json({ msg: `userID '${userEmail}' does not exist` })
   }
 
+
   if (!user.activeGymDay) {
     res.status(400).json({ msg: 'user has no active GymDay' })
   }
 
+
   const activeGymDay = await prisma.gymDay.findUnique({
-    where: { id: user.activeGymDay },
+    where: { id:user.activeGymDay}
   })
 
-  res.status(200).json(activeGymDay)
+  res.status(200).json( activeGymDay)
 }
 
 //--------------------------------//
 
 async function createGymDay(req, res) {
   const { workoutId, userId } = req.body
+
   // const session = await getSession({ req })
   // const userEmail = session.user.email
   const userEmail = 'emad@elkadys.com'
+
 
   const user = await prisma.user.findUnique({
     where: { email: userEmail },
   })
 
   if (!user) {
-    res.status(400).json({ msg: `user with email:'${userId}' does not exist` })
+
+    res.status(400).json({ msg: `user with email:'${userEmail}' does not exist` })
+
   }
   if (user.activeGymDay) {
     res
@@ -86,12 +96,14 @@ async function createGymDay(req, res) {
     })
 }
 
+
 //------------------------------//
 
 async function updateGymDay(req, res) {
   // const session = await getSession({ req })
   // const userEmail = session.user.email
   const userEmail = 'emad@elkadys.com'
+
 
   const user = await prisma.user.findUnique({
     where: { email: userEmail },
@@ -121,7 +133,9 @@ async function updateGymDay(req, res) {
 
   res
     .status(200)
+
     .json({
-      msg: `GymDay concluded successfully on ${closeGymDay.workoutFinish}`,
+      msg: `GymDay concluded successfully on ${closeGymDay.workoutFinish}.. see you next time :)`,
     })
+
 }

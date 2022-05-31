@@ -25,7 +25,7 @@ function SignUpPage() {
         <div className="mx-auto my-15 max-w-lg px-4 py-5 shadow-none md:w-1/2">
           <div className="mb-[2.5rem] flex flex-col justify-center">
               <div className='relative w-80 h-[9rem]'>
-                <Image src={Logo} alt="brand" layout='fill' objectFit='contain'/>
+                <Image src={Logo || "/assets/images/logo.png"} alt="brand" layout='fill' objectFit='contain'/>
               </div>
             <div className="p-0 text-left font-sans">
               <h1 className={h1Styling}>
