@@ -23,12 +23,12 @@ export default async function handle(req, res) {
     // const userEmail = session.user.email
     const userEmail = 'emad@elkadys.com'
 async function getGymDays(req, res) {
-  // const { userId } = req.body
-  // const user = await prisma.gymDay.findMany({
-  //   where: { userId: uid },
-  // })
 
-    
+  // const session = await getSession({ req })
+  // const userEmail = session.user.email
+  const userEmail = 'emad@elkadys.com'
+
+
   const user = await prisma.user.findUnique({
     where: { email: userEmail },
   })
@@ -36,9 +36,12 @@ async function getGymDays(req, res) {
     res.status(400).json({ msg: `userID '${userEmail}' does not exist` })
   }
 
-   if (!user.activeGymDay) {
-     res.status(400).json({ msg: 'user has no active GymDay' })
-   }
+
+  if (!user.activeGymDay) {
+    res.status(400).json({ msg: 'user has no active GymDay' })
+  }
+
+
   const activeGymDay = await prisma.gymDay.findUnique({
     where: { id:user.activeGymDay}
   })
@@ -46,21 +49,29 @@ async function getGymDays(req, res) {
   res.status(200).json( activeGymDay)
 }
 
+//--------------------------------//
+
 async function createGymDay(req, res) {
   const { workoutId, userId } = req.body
-  
+
+  // const session = await getSession({ req })
+  // const userEmail = session.user.email
+  const userEmail = 'emad@elkadys.com'
+
 
   const user = await prisma.user.findUnique({
     where: { email: userEmail },
   })
 
   if (!user) {
-    res.status(400).json({ msg: `userID '${userEmail}' does not exist` })
+
+    res.status(400).json({ msg: `user with email:'${userEmail}' does not exist` })
+
   }
   if (user.activeGymDay) {
     res
       .status(400)
-      .json({ msg: 'cannot create gymDay, user has active gymDay' })
+      .json({ msg: `cannot create gymDay, '${userEmail}' has active gymDay` })
   }
   const gymDay = await prisma.gymDay.create({
     data: {
@@ -70,31 +81,39 @@ async function createGymDay(req, res) {
     },
   })
   const updateActiveGymDay = await prisma.user.update({
-    where: { id: userId },
+    where: { email: userEmail },
     data: {
       activeGymDay: gymDay.id,
       activeWorkoutID: +workoutId,
     },
   })
 
-  res.status(200).json(gymDay)
+  res
+    .status(200)
+    .json({
+      msg: `GymDay started on ${gymDay.dateCreated} for workout id ${gymDay.workoutId}`,
+      gymDay: gymDay,
+    })
 }
 
 
+//------------------------------//
 
 async function updateGymDay(req, res) {
-  console.log(req.method)
-  
+  // const session = await getSession({ req })
+  // const userEmail = session.user.email
+  const userEmail = 'emad@elkadys.com'
+
 
   const user = await prisma.user.findUnique({
     where: { email: userEmail },
   })
 
   if (!user) {
-    res.status(400).json({ msg: `userID '${userId}' does not exist` })
+    res.status(400).json({ msg: `userID '${userEmail}' does not exist` })
   }
   if (!user.activeGymDay) {
-    res.status(400).json({ msg: 'user has no active GymDay' })
+    res.status(400).json({ msg: `userID '${userEmail}' has no active Gymdays` })
   }
   const closeGymDay = await prisma.gymDay.update({
     where: { id: user.activeGymDay },
@@ -114,5 +133,9 @@ async function updateGymDay(req, res) {
 
   res
     .status(200)
-    .json({ msg: `Gymday concluded on '${closeGymDay.workoutFinish}' see you next time :)` })
+
+    .json({
+      msg: `GymDay concluded successfully on ${closeGymDay.workoutFinish}.. see you next time :)`,
+    })
+
 }
