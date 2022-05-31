@@ -1,6 +1,7 @@
 import { useSession } from 'next-auth/react'
 import React from 'react'
 import Image from 'next/image'
+
 import WorkoutList from 'components/WorkoutList'
 
 function Dashboard() {
@@ -57,6 +58,7 @@ function Dashboard() {
       <div className={headTab}>
         <div className="align-center flex flex-col items-start md:flex-row md:justify-between lg:flex-row  lg:justify-between bg-white p-[1.2rem]">
           <div className="flex flex-row items-center justify-center ">
+
             <div className={avatarWrapper}>
               <Image
                 src={session.user.image}
@@ -64,6 +66,7 @@ function Dashboard() {
                 layout="fill"
                 className={avatar}
               />
+
             </div> 
             <div className='flex flex-col items-start justify-start ml-5'>
               <h3 className='text-[1.7rem] font-bold'>{`Hello, ${session.user.name}.`}</h3>
@@ -90,6 +93,7 @@ function Dashboard() {
       <div className={wrapper}>
           <WorkoutList/>
       </div>
+
     </div>
   )
 }

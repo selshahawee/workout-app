@@ -3,6 +3,7 @@ import React from 'react'
 
 function Calender() {
   return (
+
     <div className=" flex  grid-flow-col flex-col-reverse auto-cols-max justify-items-center bg-gray-100 p-5  pt-8 lg:grid">
       <h1 className="text-xl font-bold">Workout History</h1>
 
@@ -75,6 +76,7 @@ function Calender() {
         <CalenderComp />
       </div>
     </div>
+
   )
 }
 

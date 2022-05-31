@@ -6,6 +6,7 @@ function SideBar() {
 
     const sideBarWrapper = 'flex flex-col justify-center align-center w-[12rem] invisible lg:visible'
     const logoWrapper = 'relative w-[12rem] h-[3.5rem] self-start mb-[2rem]'
+
     
 
   return (
