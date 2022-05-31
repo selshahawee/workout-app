@@ -1,18 +1,15 @@
 import React from 'react'
 import { Field, FormikProvider, useFormik } from 'formik'
-import Link from 'next/link'
+
 import Logo from 'assets/images/logo.png'
 import Image from 'next/image'
 import SignUpPage from './index'
-import axios from "axios";
-import { signIn, signOut, useSession } from 'next-auth/react'
-import { useRouter} from "next/router";
+import axios from 'axios'
+import { useSession } from 'next-auth/react'
+import { useRouter } from 'next/router'
 
 function NewUser() {
-
   const router = useRouter()
-
-
 
   const h1Styling = 'mt-[1rem] mb-[0.2rem] text-3xl font-bold'
 
@@ -26,35 +23,27 @@ function NewUser() {
   const selectStyle =
     'form-select appearance-none block w-full px-3 py-1.5 my-[0.25rem] text-base font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-black focus:outline-none'
 
-  const { data: session } = useSession()
   const formik = useFormik({
     initialValues: {
-     
       gender: '',
       weight: 0,
       height: 0,
-      age:0,
+      age: 0,
     },
-
-    
 
     onSubmit: async (values) => {
       formik.resetForm()
       const updateUser = await axios.put(`/api/user`, values)
       console.log(updateUser)
-     router.push('/browse')
-     
+      router.push('/')
     },
   })
 
-  
+
 
   return (
-      <>
-          <nav>
-      {!session ? (
-      <SignUpPage/>
-      ) : (
+    <>
+      <nav>
         <FormikProvider value={formik}>
           <div className="flex min-h-screen bg-white">
             <div className="hidden w-1/2 bg-[url(https://images.unsplash.com/photo-1595078475328-1ab05d0a6a0e?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400)] bg-cover md:block"></div>
@@ -70,22 +59,19 @@ function NewUser() {
                 </div>
                 <div className="p-0 text-left font-sans">
                   <h1 className={h1Styling}>Fill In Your Information</h1>
-                
                 </div>
               </div>
               <form onSubmit={formik.handleSubmit}>
-              
                 <label htmlFor="age" className={labelStyle}>
                   Age
                   <input
                     id="age"
                     onInput={formik.handleChange}
                     value={formik.values.age}
-                    
                     className={inputStyle}
                   />
                 </label>
-             
+
                 <label htmlFor="gender" className={labelStyle}>
                   Gender
                   <Field
@@ -94,8 +80,8 @@ function NewUser() {
                     value={formik.values.gender}
                     className={selectStyle}
                     onSelect={formik.handleChange}
-                      >
-                        <option value=""></option>
+                  >
+                    <option value=""></option>
                     <option value="M">Male</option>
                     <option value="F">Female</option>
                   </Field>
@@ -120,15 +106,18 @@ function NewUser() {
                     className={inputStyle}
                   />
                 </label>
-                <button type="submit" className={buttonStyle} onClick={()=>formik.handleSubmit}>
-                  Submit Information 
+                <button
+                  type="submit"
+                  className={buttonStyle}
+                  onClick={() => formik.handleSubmit}
+                >
+                  Submit Information
                 </button>
               </form>
             </div>
           </div>
         </FormikProvider>
-              )}
-              </nav>
+      </nav>
     </>
   )
 }
