@@ -43,7 +43,6 @@ const { weight, reps, workoutLineId, setNumber } = req.body
        weight,
        reps,
        workoutLineId,
-       setNumber,
        userId:user.id,
        gymdayId:user.activeGymDay
      },

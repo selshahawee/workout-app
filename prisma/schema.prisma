@@ -41,7 +41,6 @@ model UserLog {
   id            Int         @id @default(autoincrement())
   weight        Int
   reps          Int
-  setNumber     Int?
   date          DateTime    @default(now())
   workoutLineId Int
   userId        String
