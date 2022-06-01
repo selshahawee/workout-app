@@ -45,7 +45,9 @@ function Browse () {
                                     alt={workout.name}
                                     layout="fill"
                                     objectFit="cover"
-                                    overflow = 'hidden'
+
+                                    
+
                                     className={workoutPic}
                                 />
                             </div>
