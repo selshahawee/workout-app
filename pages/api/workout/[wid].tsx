@@ -7,7 +7,9 @@ export default async function handle(req, res) {
   if (req.method === 'GET') {
 
     const { wid } = req.query
-    const workout = await prisma.workout.findMany({
+
+    const workout = await prisma.workout.findFirst({
+
       where: { id: +wid },
       include: { exercises: {include:{ exercise: true } },
     }})

@@ -11,6 +11,7 @@ model Workout {
   id        Int           @id @default(autoincrement())
   name      String
   imgUrl    String
+  description    String?
   gymDays   GymDay[]
   exercises WorkoutLine[]
 }
@@ -40,7 +41,6 @@ model UserLog {
   id            Int         @id @default(autoincrement())
   weight        Int
   reps          Int
-  setNumber     Int
   date          DateTime    @default(now())
   workoutLineId Int
   userId        String
@@ -100,6 +100,8 @@ model User {
   height        Int?
   streakCount   Int?
   weight        Int?
+  activeGymDay String?
+  activeWorkoutID        Int?
   accounts      Account[]
   gymDays       GymDay[]
   sessions      Session[]
