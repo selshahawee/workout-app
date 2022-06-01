@@ -1,11 +1,16 @@
 import { useSession } from 'next-auth/react'
+import { useRouter } from 'next/router'
 import React from 'react'
 import Image from 'next/image'
+import useSWR from 'swr'
+import axios from 'axios'
+
+
+
 
 import dummy from 'assets/images/download.png'
 import Excercise from 'components/Excercise'
 import ActiveExcercise from 'components/ActiveExcercise'
-
 
 
 function Dashboard() {
@@ -22,7 +27,23 @@ function Dashboard() {
   
   const colorLoop = (arr) => {
    return arr [Math.floor(Math.random() * arr.length)];
-}
+``}
+
+  const fetcher = (url) => axios.get(url).then((res) => res.data)
+  const gymday = useSWR('/api/user/gymday', fetcher)
+  console.log({gymday})
+
+  const woid = () => {
+    if(gymday){
+      return `${gymday.data.id}`
+    }else{
+      return '2'
+    }
+  }
+
+  const { data, error } = useSWR('/api/workout/2', fetcher)
+  console.log({data})
+
 
   const recordsTest = [
     {
@@ -96,9 +117,19 @@ function Dashboard() {
           ))}
         </ul>
       </div>
+
+      <ul className="flex flex-col items-start justify-center w-full">
+          {data?.exercises?.map((exercise) => (
+            <li key={exercise.id} className='flex-col justify-center border transition ease-in-out delay-150 p-[1rem] rounded-2xl my-[1rem] hover:-translate-y-1 hover:bg-white duration-300'>
+              <Excercise exercise={exercise}/>
+            </li>
+          ))}
+        </ul>
+
       <div className={wrapper}>
           <Excercise/>
       </div>
+
 
     </div>
   )

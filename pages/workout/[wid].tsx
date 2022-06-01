@@ -8,6 +8,10 @@ import { useRouter } from 'next/router'
 import { useSession } from 'next-auth/react'
 import ActiveExcercise from 'components/ActiveExcercise'
 
+import Excercise from 'components/Excercise'
+
+
+
 
 export default function Workout() {
   const imageContainer =
@@ -30,15 +34,12 @@ export default function Workout() {
 // const userEmail = session.user.email
 // const payload = { userEmail }
 
+  const gymday = useSWR('/api/user/gymday', fetcher)
+  console.log(gymday)
 
   const fetcher = (url) => axios.get(url).then((res) => res.data)
   const { data, error } = useSWR('/api/workout/' + wid, fetcher)
-  console.log(data)
-
-
-const gymday = useSWR('/api/user/gymday', fetcher)
-console.log(gymday)
-
+  console.log({data})
 
 
   if (!data) {
