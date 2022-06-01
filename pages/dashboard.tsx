@@ -9,7 +9,7 @@ function Dashboard() {
   const avatar = 'rounded-full'
   const test = 'hover:bg-black-600 w-full rounded bg-black py-3 text-white mt-[2rem] transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:text-[1rem] duration-300 ...'
   const headTab = "w-full rounded-2xl border bg-white"
-  const wrapper = 'mt-[1rem] border flex flex-col rounded-2xl p-[0.5rem] bg-white'
+  const wrapper = 'mt-[1rem] border flex flex-col rounded-2xl p-[0.5rem]'
   const headButtons = 'mx-[0.5rem] my-[0.5rem] bg-white text-black border rounded-2xl p-[0.6rem] transition ease-in-out delay-150 hover:bg-black hover:text-white hover:scale-105 duration-300 ...'
   
   const { data: session, status } = useSession()
