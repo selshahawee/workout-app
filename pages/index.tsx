@@ -6,6 +6,7 @@ import Layout from '../components/Layout'
 import Browse from './browse'
 import Dashboard from './dashboard'
 
+
 export default function Home() {
 
   return (
@@ -18,7 +19,6 @@ export default function Home() {
       <Layout>
         <Dashboard />
       </Layout>
-
 
     </>
   )

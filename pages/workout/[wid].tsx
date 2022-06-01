@@ -21,6 +21,7 @@ export default function Workout() {
   const workoutName = 'font-bold'
   const workoutPic = 'relative w-80 h-[27rem] rounded-2xl mb-[0.75rem] rounded-2xl border'
 
+
   const router = useRouter()
   const { wid } = router.query
 
@@ -37,6 +38,7 @@ export default function Workout() {
 
 const gymday = useSWR('/api/user/gymday', fetcher)
 console.log(gymday)
+
 
 
   if (!data) {
