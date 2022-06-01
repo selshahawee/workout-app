@@ -51,23 +51,21 @@ function ActiveExcercise({ exercise }) {
 
   return (
     <Fragment>
-      {/* <div className={videoContainer}> */}
-        <iframe src={exercise?.exercise.videoUrl} title={exercise?.exercise.name} allow='autoPlay'className='w-full'/>
-      {/* </div> */}
+      <iframe src={exercise?.exercise.videoUrl} title={exercise?.exercise.name} allow='autoPlay'className='w-full'/>
       <h2 className={excerciseName}>{exercise?.exercise.name}</h2>
       <p className={excerciseDescription}>{exercise?.exercise.description}</p>
-      <div className = 'flex flex-row justify-start items-center'>
+      <div className = 'flex flex-row items-center justify-start'>
       <p>
         {' '}
         {exercise?.sugSets} sets x {exercise?.sugReps} reps
         <Checkbox onChange={(e) => checkExcercise(e)}/>
       </p>
     </div>
-      <div className='bg-white hover:bg-gray-200 w-full rounded-2xl'>
+      <div className='w-full bg-white hover:bg-gray-200 rounded-2xl'>
         <form className='flex flex-col items-center justify-center lg:items-stretch'>
           {Array.from(Array(exercise?.sugSets).keys()).map((e) => (
             //will need an api call on =Click for updating the userLog
-            <div className='flex flex-row justify-around items-center' key={e}>
+            <div className='flex flex-row items-center justify-around' key={e}>
               <span>set {e + 1}: </span>
               <label>
                 <span className='mx-3'>Reps:</span>

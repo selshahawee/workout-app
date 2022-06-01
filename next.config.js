@@ -12,6 +12,7 @@ const nextConfig = {
       'www.w3.org',
       'lh3.googleusercontent.com',
       'picsum.photos',
+      'www.youtube.com'
     ],
   },
 }

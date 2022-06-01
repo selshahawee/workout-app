@@ -2,8 +2,9 @@ import { useSession } from 'next-auth/react'
 import React from 'react'
 import Image from 'next/image'
 import dummy from 'assets/images/download.png'
+import Excercise from 'components/Excercise'
+import ActiveExcercise from 'components/ActiveExcercise'
 
-import WorkoutList from 'components/WorkoutList'
 
 function Dashboard() {
   const avatarWrapper = 'h-[4rem] w-[4rem] relative rounded-full'
@@ -94,7 +95,7 @@ function Dashboard() {
         </ul>
       </div>
       <div className={wrapper}>
-          <WorkoutList/>
+          <Excercise/>
       </div>
 
     </div>
