@@ -77,7 +77,7 @@ async function createGymDay(req, res) {
     data: {
       activeWorkout: true,
       workoutId: +workoutId,
-      userId,
+      userId:user.id,
     },
   })
   const updateActiveGymDay = await prisma.user.update({

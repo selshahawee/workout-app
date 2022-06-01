@@ -11,6 +11,9 @@ export default async function handle(req, res) {
     case 'POST':
       createUserLog(req, res)
       break
+    case 'GET':
+      getUserLog(req, res)
+      break
   }
 }
 
@@ -40,13 +43,48 @@ const { weight, reps, workoutLineId, setNumber } = req.body
 
    const userLog = await prisma.userLog.create({
      data: {
-       weight,
-       reps,
-       workoutLineId,
+       weight:+weight,
+       reps:+reps,
+       workoutLineId:+workoutLineId,
        userId:user.id,
        gymdayId:user.activeGymDay
      },
    })
 //   res.status(200).json({ msg:req.method, user,activeGymDay })
   res.status(200).json(userLog)
+}
+
+
+//-----------------Get UserLogs--------------------------------
+
+async function getUserLog(req, res) {
+  // const session = await getSession({ req })
+  // const userEmail = session.user.email
+  const userEmail = 'emad@elkadys.com'
+  const { weight, reps, workoutLineId, setNumber } = req.body
+
+  const user = await prisma.user.findUnique({
+    where: { email: userEmail },
+  })
+  if (!user) {
+    res.status(400).json({ msg: `userID '${userEmail}' does not exist` })
+  }
+const gymDay = await prisma.gymDay.findMany({
+where: {user},
+select:{
+  UserLog:true
+}
+})
+
+
+
+
+const userLogs = await prisma.userLog.groupBy({
+  by:['workoutLineId'],
+  _sum:{
+    reps:true
+  }
+})
+
+  res.status(200).json(gymDay)
 }
