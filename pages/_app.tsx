@@ -11,11 +11,11 @@ export default function App({
  
   return (
       <SessionProvider session={session}>
-      {/* <ProtectedRoute> */}
+        <Layout>
           <Component {...pageProps} />
-          {/* </ProtectedRoute> */}
+        </Layout>
       </SessionProvider>
-    // </SWRConfig>
+
    
   )
 }
