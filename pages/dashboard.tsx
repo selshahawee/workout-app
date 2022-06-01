@@ -4,10 +4,13 @@ import React from 'react'
 import Image from 'next/image'
 import useSWR from 'swr'
 import axios from 'axios'
+
+
+
+
 import dummy from 'assets/images/download.png'
 import Excercise from 'components/Excercise'
 import ActiveExcercise from 'components/ActiveExcercise'
-
 
 
 function Dashboard() {
@@ -114,6 +117,7 @@ function Dashboard() {
           ))}
         </ul>
       </div>
+
       <ul className="flex flex-col items-start justify-center w-full">
           {data?.exercises?.map((exercise) => (
             <li key={exercise.id} className='flex-col justify-center border transition ease-in-out delay-150 p-[1rem] rounded-2xl my-[1rem] hover:-translate-y-1 hover:bg-white duration-300'>
@@ -121,6 +125,11 @@ function Dashboard() {
             </li>
           ))}
         </ul>
+
+      <div className={wrapper}>
+          <Excercise/>
+      </div>
+
 
     </div>
   )

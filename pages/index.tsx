@@ -4,8 +4,10 @@ import SignInPage from './login'
 import Header from '../components/Header'
 import Layout from '../components/Layout'
 
+
 import Browse from './browse';
 import Dashboard from "./dashboard";
+
 
 
 
@@ -16,7 +18,6 @@ export default function Home() {
       <Head>
         <title>WorkOut</title>
       </Head>
-
 
 
       <Layout>
