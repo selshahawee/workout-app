@@ -8,6 +8,7 @@ import { useRouter } from 'next/router'
 import { useSession } from 'next-auth/react'
 import ActiveExcercise from 'components/ActiveExcercise'
 import Excercise from 'components/Excercise'
+import { CircularProgress } from '@mui/material';
 
 
 export default function Workout() {
@@ -40,7 +41,7 @@ export default function Workout() {
 
 
   if (!data) {
-    return <h1>Loading..</h1>
+    return <CircularProgress color="inherit" />
   }
   return (
     

@@ -34,7 +34,7 @@ function UserDropDown() {
         leaveFrom="transform scale-100 opacity-100"
         leaveTo="transform scale-95 opacity-0"
       >
-        <Menu.Items as="ul" className='flex flex-col justify-center align-center-1rem rounded-2xl border w-[10rem] absolute right-0 mt-14 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none mr-[1rem] lg:left-[1165px]'>
+        <Menu.Items as="ul" className='flex flex-col justify-center align-center-1rem rounded-2xl border w-[10rem] absolute right-0 mt-14 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none mr-[1rem] lg:left-[65rem]'>
           <Menu.Item as = 'li' className='px-5 hover:bg-black hover:text-white '>
             {({ active }) => (
                 <a

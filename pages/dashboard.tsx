@@ -23,7 +23,7 @@ function Dashboard() {
   const colorLoop = (arr) => {
    return arr [Math.floor(Math.random() * arr.length)];
 ``}
-    // gymday get gets the gym day data, post create gymday . put end gymday
+  // gymday get gets the gym day data, post create gymday . put end gymday
   const gymDayGetter = (url) => axios.get(url).then((res) => res.data)
   const gymday = useSWR('/api/user/gymday', gymDayGetter)
   console.log({gymday})
@@ -76,7 +76,7 @@ function Dashboard() {
 
 
   return (
-    <div className="flex flex-col p-[1rem] justify-center border">
+    <div className="flex flex-col p-[1rem] justify-center border lg:w-[87%]">
       <div className={headTab}>
         <div className="align-center flex flex-col items-start md:flex-row md:justify-between lg:flex-row  lg:justify-between bg-white p-[1.2rem]">
           <div className="flex flex-row items-center justify-center ">

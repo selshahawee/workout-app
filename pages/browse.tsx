@@ -4,7 +4,7 @@ import useSWR from 'swr'
 import axios from 'axios'
 import Link from 'next/link'
 import Image from 'next/image'
-
+import { CircularProgress } from '@mui/material';
 function Browse () {
 
     const imageContainer = "relative w-80 h-[27rem] rounded-2xl mb-[0.75rem] rounded-2xl"
@@ -28,6 +28,19 @@ function Browse () {
     useEffect(()=>{
         console.log({data})
     },[])
+
+    // if (!data) {
+
+    //     return (
+    //     <div className='flex justify-center items-center w-full h-[100vh]'>
+    //         <CircularProgress color="inherit" />
+    //     </div>
+    //     )    
+    //   }
+
+    if(!data){
+        return <h1>loading</h1>
+    }
     
     return (
         <div className={browserWrapper}>
