@@ -71,13 +71,14 @@ async function getUserLog(req, res) {
   }
 const gymDay = await prisma.gymDay.findMany({
 where: {user},
-select:{
-  UserLog:true
-}
+include:{
+  UserLog:true,
+  
+},
 })
+const exercises = await prisma.userLog.findMany({
 
-
-
+})
 
 const userLogs = await prisma.userLog.groupBy({
   by:['workoutLineId'],
@@ -86,5 +87,11 @@ const userLogs = await prisma.userLog.groupBy({
   }
 })
 
-  res.status(200).json(gymDay)
+  res.status(200).json({gymDay,exercises,userLogs})
 }
+
+
+function sum(a,b){
+  return a+b
+}
+
