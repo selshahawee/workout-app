@@ -12,11 +12,11 @@ type ChildrenProps = {
 
 function HomeLayout({ children }: ChildrenProps) {
   const grid =
-    'flex flex-row justify-center items-center w-full min-height-screen lg:justify-between'
-  const headerRow = 'w-full mb-[2.5rem] bg-white h-[5rem]'
+    'flex flex-row justify-center items-center w-full min-height-screen lg:justify-between bg-gray-200'
+  const headerRow = 'w-full mb-[2.5rem] bg-white h-[5rem] lg:w-[110%]'
   const pageWrapper = ''
   const asideColumn = ''
-  const mainBlock = 'w-full self-center lg:w-[88.8%] lg:self-start bg-gray-200'
+  const mainBlock = 'w-full self-center lg:w-[88.8%] lg:self-start bg-gray-200 lg:min-w-[81rem]'
   const footerRow = ''
 
   const router = useRouter();
@@ -29,7 +29,7 @@ function HomeLayout({ children }: ChildrenProps) {
   // }
   return (
     <div className={grid}>
-      <aside className="absolute top-0 left-0 mt-[1rem] hidden w-[0rem] items-start justify-start lg:block lg:w-[14rem]">
+      <aside className="absolute top-0 left-0 pt-[1rem] flex flex-col bg-white h-[100vh] hidden w-[0rem] items-start justify-start lg:block lg:w-[12rem]">
         <SideBar />
       </aside>
       <div className="flex flex-col items-center justify-end bg-gray-200 lg:ml-[12rem]">

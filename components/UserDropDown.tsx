@@ -9,11 +9,7 @@ function UserDropDown() {
   const avatarWrapper = 'h-[2.5rem] w-[2.5rem] relative rounded-full'
   const avatar = 'rounded-full'
   const authedUser =
-    'flex flex-row justify-center align center absolute right-0 mx-[1.5rem] mb-3'
-  const menuItemsList =
-    'flex flex-col justify-center align-center-1rem rounded-2xl border w-[10rem] absolute right-0 mt-14 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none mr-[1rem]'
-  const profileItem = 'px-5 hover:bg-black hover:text-white '
-    const signOutItem = 'px-5 hover:bg-black hover:text-white hover:font-semibold rounded-b-md'
+    'flex flex-row justify-center align center absolute right-0 mx-[1.5rem] mb-3 '
     
   const {data :session } = useSession();
   const authedUserName = 'mx-[1rem] mt-[0.2rem] mb-0 text-xl font-semibold'
@@ -38,8 +34,8 @@ function UserDropDown() {
         leaveFrom="transform scale-100 opacity-100"
         leaveTo="transform scale-95 opacity-0"
       >
-        <Menu.Items as="ul" className={menuItemsList}>
-          <Menu.Item as = 'li' className={profileItem}>
+        <Menu.Items as="ul" className='flex flex-col justify-center align-center-1rem rounded-2xl border w-[10rem] absolute right-0 mt-14 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none mr-[1rem] lg:left-[1165px]'>
+          <Menu.Item as = 'li' className='px-5 hover:bg-black hover:text-white '>
             {({ active }) => (
                 <a
                 className={`${active} && 'font-semibold rounded-t-md'`}
@@ -49,7 +45,7 @@ function UserDropDown() {
                 </a>
             )}
             </Menu.Item>
-            <Menu.Item as = 'li' className={signOutItem} >
+            <Menu.Item as = 'li' className='px-5 hover:bg-black hover:text-white hover:font-semibold rounded-b-md'>
             {({ active }) => (
                 <button
                 className={`${active}`}

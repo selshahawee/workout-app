@@ -20,7 +20,7 @@ export default function Home() {
 
 
       <Layout>
-        <Dashboard />
+        <Browse/>
       </Layout>
 
 

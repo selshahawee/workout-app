@@ -8,8 +8,6 @@ import dummy from 'assets/images/download.png'
 import Excercise from 'components/Excercise'
 import ActiveExcercise from 'components/ActiveExcercise'
 
-
-
 function Dashboard() {
   const avatarWrapper = 'h-[4rem] w-[4rem] relative rounded-full'
   const avatar = 'rounded-full'
@@ -25,20 +23,20 @@ function Dashboard() {
   const colorLoop = (arr) => {
    return arr [Math.floor(Math.random() * arr.length)];
 ``}
-
-  const fetcher = (url) => axios.get(url).then((res) => res.data)
-  const gymday = useSWR('/api/user/gymday', fetcher)
+    // gymday get gets the gym day data, post create gymday . put end gymday
+  const gymDayGetter = (url) => axios.get(url).then((res) => res.data)
+  const gymday = useSWR('/api/user/gymday', gymDayGetter)
   console.log({gymday})
 
-  const woid = () => {
-    if(gymday){
-      return `${gymday.data.id}`
-    }else{
-      return '2'
-    }
-  }
-
-  const { data, error } = useSWR('/api/workout/2', fetcher)
+  // const woid = () => {
+  //   if(gymday){
+  //     return `${gymday?.id}`
+  //   }else{
+  //     return '2'
+  //   }
+  // }
+  const getWorkout = (url) => axios.get(url).then((res) => res.data)
+  const { data, error } = useSWR(`/api/workout/2`, getWorkout)
   console.log({data})
 
 
