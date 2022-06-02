@@ -37,20 +37,20 @@ function ActiveExcercise({ exercise }) {
   // className={videoContainer}
 
   const [checked, setChecked] = useState(false);
-  
+
   const  checkExcercise= (e) => {
     console.log('done');
     setChecked(true)
     
   };
 
+
   const formData = (url) => axios.put(url).then((res) => res.data)
     const updateGymDay = useSWR('/api/user/gymday', formData)
 
   const checkSet = (e) => {
     console.log('done');
-    
-    
+    //the api call to update the user log
 
   }
 

@@ -9,7 +9,7 @@ import { useSession } from 'next-auth/react'
 import ActiveExcercise from 'components/ActiveExcercise'
 import Excercise from 'components/Excercise'
 import { CircularProgress } from '@mui/material';
-
+import Excercise from 'components/Excercise'
 
 export default function Workout() {
   const imageContainer =

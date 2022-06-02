@@ -23,20 +23,15 @@ function Dashboard() {
   const colorLoop = (arr) => {
    return arr [Math.floor(Math.random() * arr.length)];
 ``}
+
   // gymday get gets the gym day data, post create gymday . put end gymday
   const gymDayGetter = (url) => axios.get(url).then((res) => res.data)
   const gymday = useSWR('/api/user/gymday', gymDayGetter)
   console.log({gymday})
 
-  // const woid = () => {
-  //   if(gymday){
-  //     return `${gymday?.id}`
-  //   }else{
-  //     return '2'
-  //   }
-  // }
   const getWorkout = (url) => axios.get(url).then((res) => res.data)
   const { data, error } = useSWR(`/api/workout/2`, getWorkout)
+
   console.log({data})
 
 
@@ -119,7 +114,6 @@ function Dashboard() {
             </li>
           ))}
         </ul>
-
     </div>
   )
 }
