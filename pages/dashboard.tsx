@@ -28,17 +28,17 @@ function Dashboard() {
     },
     {
       key:'2',
-      workout:'squats',
+      workout:'chest',
       weight: '20lbs'
     },
     {
       key:'3',
-      workout:'squats',
+      workout:'shoulders',
       weight: '20lbs'
     },
     {
       key:'5',
-      workout:'squats',
+      workout:'pull ups',
       weight: '20lbs'
     },
     {

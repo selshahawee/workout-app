@@ -4,7 +4,8 @@ import { useRouter } from 'next/router'
 import Header from './Header'
 import SideBar from './SideBar'
 import { useSession } from 'next-auth/react'
-import SignUpPage from 'pages/signup'
+
+import SignInPage from 'pages/login'
 
 type ChildrenProps = {
   children: ReactNode
@@ -25,7 +26,7 @@ function HomeLayout({ children }: ChildrenProps) {
     return <p>loading......</p>
   }
   if (status === 'unauthenticated') {
-   return <SignUpPage/>
+   return <SignInPage/>
   }
   return (
     <div className={grid}>

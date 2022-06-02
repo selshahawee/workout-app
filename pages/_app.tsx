@@ -8,14 +8,15 @@ export default function App({
   Component,
   pageProps: { session, ...pageProps },
 }) {
- 
+
   return (
-      <SessionProvider session={session}>
+    <SWRConfig value={options}>
+ <SessionProvider session={session}>
       {/* <ProtectedRoute> */}
           <Component {...pageProps} />
           {/* </ProtectedRoute> */}
       </SessionProvider>
-    // </SWRConfig>
+     </SWRConfig>
    
   )
 }
