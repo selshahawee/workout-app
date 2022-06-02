@@ -4,14 +4,9 @@ import React from 'react'
 import Image from 'next/image'
 import useSWR from 'swr'
 import axios from 'axios'
-
-
-
-
 import dummy from 'assets/images/download.png'
 import Excercise from 'components/Excercise'
 import ActiveExcercise from 'components/ActiveExcercise'
-
 
 function Dashboard() {
   const avatarWrapper = 'h-[4rem] w-[4rem] relative rounded-full'
@@ -29,19 +24,14 @@ function Dashboard() {
    return arr [Math.floor(Math.random() * arr.length)];
 ``}
 
-  const fetcher = (url) => axios.get(url).then((res) => res.data)
-  const gymday = useSWR('/api/user/gymday', fetcher)
+  // gymday get gets the gym day data, post create gymday . put end gymday
+  const gymDayGetter = (url) => axios.get(url).then((res) => res.data)
+  const gymday = useSWR('/api/user/gymday', gymDayGetter)
   console.log({gymday})
 
-  const woid = () => {
-    if(gymday){
-      return `${gymday.data.id}`
-    }else{
-      return '2'
-    }
-  }
+  const getWorkout = (url) => axios.get(url).then((res) => res.data)
+  const { data, error } = useSWR(`/api/workout/2`, getWorkout)
 
-  const { data, error } = useSWR('/api/workout/2', fetcher)
   console.log({data})
 
 
@@ -81,7 +71,7 @@ function Dashboard() {
 
 
   return (
-    <div className="flex flex-col p-[1rem] justify-center border">
+    <div className="flex flex-col p-[1rem] justify-center border lg:w-[87%]">
       <div className={headTab}>
         <div className="align-center flex flex-col items-start md:flex-row md:justify-between lg:flex-row  lg:justify-between bg-white p-[1.2rem]">
           <div className="flex flex-row items-center justify-center ">
@@ -117,7 +107,6 @@ function Dashboard() {
           ))}
         </ul>
       </div>
-
       <ul className="flex flex-col items-start justify-center w-full">
           {data?.exercises?.map((exercise) => (
             <li key={exercise.id} className='flex-col justify-center border transition ease-in-out delay-150 p-[1rem] rounded-2xl my-[1rem] hover:-translate-y-1 hover:bg-white duration-300'>
@@ -125,12 +114,6 @@ function Dashboard() {
             </li>
           ))}
         </ul>
-
-      <div className={wrapper}>
-          <Excercise/>
-      </div>
-
-
     </div>
   )
 }

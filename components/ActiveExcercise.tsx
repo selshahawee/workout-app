@@ -44,9 +44,14 @@ function ActiveExcercise({ exercise }) {
     
   };
 
+
+  const formData = (url) => axios.put(url).then((res) => res.data)
+    const updateGymDay = useSWR('/api/user/gymday', formData)
+
   const checkSet = (e) => {
     console.log('done');
     //the api call to update the user log
+
   }
 
   return (

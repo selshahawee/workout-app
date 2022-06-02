@@ -12,7 +12,7 @@ function NavBar() {
   
   
   const [open, setOpen] = useState(false)
-  const headerContainer = 'bg-white flex flex-row py-[1.2rem] justify-between align-center '
+  const headerContainer = 'bg-white flex flex-row py-[1.2rem] justify-between align-center px-[0.5rem] w-full'
 
   return (
     <Fragment>

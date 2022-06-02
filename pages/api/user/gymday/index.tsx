@@ -21,12 +21,12 @@ export default async function handle(req, res) {
 }
     // const session = await getSession({ req })
     // const userEmail = session.user.email
-    const userEmail = 'emad@elkadys.com'
+    const userEmail = 'omartareketman@gmail.com'
 async function getGymDays(req, res) {
 
   // const session = await getSession({ req })
   // const userEmail = session.user.email
-  const userEmail = 'emad@elkadys.com'
+  const userEmail = 'omartareketman@gmail.com'
 
 
   const user = await prisma.user.findUnique({
@@ -102,7 +102,7 @@ async function createGymDay(req, res) {
 async function updateGymDay(req, res) {
   // const session = await getSession({ req })
   // const userEmail = session.user.email
-  const userEmail = 'emad@elkadys.com'
+  const userEmail = 'omartareketman@gmail.com'
 
 
   const user = await prisma.user.findUnique({

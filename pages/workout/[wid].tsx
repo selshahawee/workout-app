@@ -7,11 +7,9 @@ import Image from 'next/image'
 import { useRouter } from 'next/router'
 import { useSession } from 'next-auth/react'
 import ActiveExcercise from 'components/ActiveExcercise'
-
 import Excercise from 'components/Excercise'
-
-
-
+import { CircularProgress } from '@mui/material';
+import Excercise from 'components/Excercise'
 
 export default function Workout() {
   const imageContainer =
@@ -43,7 +41,7 @@ export default function Workout() {
 
 
   if (!data) {
-    return <h1>Loading..</h1>
+    return <CircularProgress color="inherit" />
   }
   return (
     
