@@ -10,11 +10,12 @@ export default function App({
 }) {
 
   return (
- 
- <SessionProvider session={session}>
-      {/* <ProtectedRoute> */}
+
+      <SessionProvider session={session}>
+        <Layout>
+
           <Component {...pageProps} />
-          {/* </ProtectedRoute> */}
+        </Layout>
       </SessionProvider>
 
    

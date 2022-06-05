@@ -41,7 +41,6 @@ model UserLog {
   id            Int         @id @default(autoincrement())
   weight        Int
   reps          Int
-  setNumber     Int
   date          DateTime    @default(now())
   workoutLineId Int
   userId        String
@@ -101,7 +100,7 @@ model User {
   height        Int?
   streakCount   Int?
   weight        Int?
-  activeGymDay String?
+  activeGymDay  String?
   activeWorkoutID        Int?
   accounts      Account[]
   gymDays       GymDay[]
