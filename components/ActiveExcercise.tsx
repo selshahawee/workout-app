@@ -22,7 +22,10 @@ import Checkbox from '@mui/material/Checkbox'
 // /api/user/log
 // post method
 
+
+
 function ActiveExcercise({ exercise }) {
+
   const videoContainer =
     'relative w-full h-[27rem] rounded-2xl mb-[0.75rem] rounded-2xl border'
   const caption =
@@ -35,6 +38,20 @@ function ActiveExcercise({ exercise }) {
   const excerciseName = 'font-bold text-[1.2rem] my-[0.5rem]'
   const excerciseDescription = 'mb-[1rem] flex min-w-[22rem] max-w-[50rem]'
   // className={videoContainer}
+
+
+
+  const formData = (url) => axios.put(url).then((res) => res.data)
+  const {data:logUpdate, error} = useSWR('/api/user/log', formData)
+
+  const  checkExcercise= (e) => {
+    console.log('exercise done');
+    
+  };
+
+  const checkSet = (e) => {
+    console.log('set done');
+    return logUpdate
 
   const [checked, setChecked] = useState(false);
 

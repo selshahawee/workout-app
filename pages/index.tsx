@@ -16,6 +16,18 @@ export default function Home() {
         <title>WorkOut</title>
       </Head>
 
+
+      {/* <nav>
+        {!session? (
+          <SignInPage/>
+        ) : (
+          <Layout>
+            <Dashboard/>
+            <Browse/>
+          </Layout>
+        )}
+      </nav> */}
+
       <Layout>
         <Browse/>
       </Layout>

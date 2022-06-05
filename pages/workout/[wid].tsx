@@ -7,7 +7,6 @@ import Image from 'next/image'
 import { useRouter } from 'next/router'
 import { useSession } from 'next-auth/react'
 import ActiveExcercise from 'components/ActiveExcercise'
-import Excercise from 'components/Excercise'
 import { CircularProgress } from '@mui/material';
 import Excercise from 'components/Excercise'
 
@@ -32,6 +31,23 @@ export default function Workout() {
 // const userEmail = session.user.email
 // const payload = { userEmail }
 
+
+  const fetcher = (url) => axios.get(url).then((res) => res.data)
+  const { data, error } = useSWR('/api/workout/' + wid, fetcher)
+  console.log({data})
+  const {data:gymday, error} = useSWR('/api/user/gymday', fetcher)
+  console.log(gymday)
+
+
+
+  if(!data) {
+
+    return (
+        <div className='flex justify-center items-center w-full h-[100vh]'>
+            <CircularProgress color="inherit" className='w-[12rem]'/>
+      </div> 
+    )  
+
   const gymday = useSWR('/api/user/gymday', fetcher)
   console.log(gymday)
 
@@ -42,7 +58,9 @@ export default function Workout() {
 
   if (!data) {
     return <CircularProgress color="inherit" />
+
   }
+
   return (
     
     <div className={browserWrapper}>
@@ -73,6 +91,7 @@ export default function Workout() {
           ))}
         </ul>
       )}
+      
     </div>
   )
 }

@@ -25,12 +25,12 @@ function Dashboard() {
 ``}
 
   // gymday get gets the gym day data, post create gymday . put end gymday
-  const gymDayGetter = (url) => axios.get(url).then((res) => res.data)
-  const gymday = useSWR('/api/user/gymday', gymDayGetter)
-  console.log({gymday})
 
-  const getWorkout = (url) => axios.get(url).then((res) => res.data)
-  const { data, error } = useSWR(`/api/workout/2`, getWorkout)
+  const getter = (url) => axios.get(url).then((res) => res.data)
+  const gymday = useSWR('/api/user/gymday', getter)
+  console.log({gymday})
+  const { data: workout , error } = useSWR(`/api/workout/2`, getter)
+  console.log({workout})
 
   console.log({data})
 

@@ -20,12 +20,14 @@ function HomeLayout({ children }: ChildrenProps) {
 
   const router = useRouter();
   const { data: session, status } = useSession()
+
   // if (status === 'loading') {
   //   return <p>loading......</p>
   // }
   // if (status === 'unauthenticated') {
   //  return <SignInPage/>
   // }
+
   return (
     <div className={grid}>
       <aside className="fixed top-0 left-0 pt-[1rem] flex flex-col bg-white h-[100vh] hidden w-[0rem] items-start justify-start lg:block lg:w-[12rem]">
