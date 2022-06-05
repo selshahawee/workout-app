@@ -1,5 +1,5 @@
 import { PrismaClient } from '@prisma/client'
-
+import moment from "moment"
 import _ from "lodash"
 const prisma = new PrismaClient()
 
@@ -28,7 +28,7 @@ export default async function handle(req, res) {
           return x.weight;
         }),
         labels: value.map((x) => {
-          return (x.date);
+          return moment(x.date).format('MMM Do YY');
         })
       };
     });
