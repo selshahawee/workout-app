@@ -1,8 +1,7 @@
 import { PrismaClient, Workout, Exercise } from '@prisma/client'
 
-// Fetch all posts (in /pages/api/posts.ts)
-const prisma = new PrismaClient()
-
+import {prisma } from "../prismaClient"
+ prisma 
 export default async function handle(req, res) {
 
   //todo: add auth support

@@ -4,13 +4,19 @@ import React from 'react'
 function Calender() {
   return (
 
-    <div className=" flex  grid-flow-col flex-col-reverse auto-cols-max justify-items-center bg-gray-100 p-5  pt-8 lg:grid">
-      <h1 className="text-xl font-bold">Workout History</h1>
+    <div className=" flex justify-around grid-flow-col flex-col-reverse auto-cols-max justify-items-center bg-gray-100 p-5  pt-8 lg:grid">
+      
+      
 
       <div className="flex flex-col justify-items-center ">
-        <div className=" hover:bg-white-800 m-4 flex h-[70px] justify-around  rounded-lg border bg-white shadow-md hover:bg-gray-100 dark:border-gray-700  md:max-w-xl  md:flex-row  ">
-          <span>Date</span>
+      <h1 className="text-xl font-bold p-5 ">Workout History</h1>
+        <div className=" hover:bg-white-800 m-4 flex justify-start p-[1rem] justify-around  rounded-lg border bg-white shadow-md hover:bg-gray-100 dark:border-gray-700  md:max-w-xl  md:flex-row  ">
+          <div className="flex jutify-start">
+            <span>date</span>
+          </div>
+          <div>
           <span>Workout</span>
+          </div>
         </div>
 
         <div className="  hover:bg-white-800 m-4 flex rounded-lg border bg-white shadow-md hover:bg-gray-100 dark:border-gray-700 md:max-w-xl md:flex-row ">
@@ -21,7 +27,7 @@ function Calender() {
               alt=""
             />
           </div>
-          <div className="flex flex-col p-8  leading-normal">
+          <div className="flex flex-col p-8  leading-normal  w-80">
             <h3 className="mb-2  font-bold tracking-tight text-black">
               squats
             </h3>
@@ -72,7 +78,7 @@ function Calender() {
           </div>
         </div>
       </div>
-      <div>
+      <div className="flex ">
         <CalenderComp />
       </div>
     </div>

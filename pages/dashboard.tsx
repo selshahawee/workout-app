@@ -43,17 +43,17 @@ function Dashboard() {
     },
     {
       key:'2',
-      workout:'squats',
+      workout:'chest',
       weight: '20lbs'
     },
     {
       key:'3',
-      workout:'squats',
+      workout:'shoulders',
       weight: '20lbs'
     },
     {
       key:'5',
-      workout:'squats',
+      workout:'pull ups',
       weight: '20lbs'
     },
     {
@@ -78,7 +78,9 @@ function Dashboard() {
 
             <div className={avatarWrapper}>
               <Image
+
                 src={session ? session.user.image : dummy}
+
                 alt="Avatar"
                 layout="fill"
                 className={avatar}
@@ -86,6 +88,7 @@ function Dashboard() {
 
             </div> 
             <div className='flex flex-col items-start justify-start ml-5'>
+
               <h3 className='text-[1.7rem] font-bold'>{`Hello, ${session? session.user.name : `username`}.`}</h3>
               <p>streaks</p>
             </div>
