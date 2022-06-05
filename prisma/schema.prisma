@@ -100,7 +100,7 @@ model User {
   height        Int?
   streakCount   Int?
   weight        Int?
-  activeGymDay String?
+  activeGymDay  String?
   activeWorkoutID        Int?
   accounts      Account[]
   gymDays       GymDay[]

@@ -2,9 +2,9 @@ import React from 'react'
 import Link from 'next/link'
 function Navigator() {
 
-  const navList = 'flex flex-col justify-start w-full '
+  const navList = 'flex flex-col justify-start w-full z-30'
 
-  const navListItem = "py-[0.5rem] px-[1.5rem] transition ease-in-out delay-15 hover:bg-gray-800 hover:pl-[1rem] hover:text-white"
+  const navListItem = "py-[0.5rem] px-[1.5rem] z-40 transition ease-in-out delay-15 hover:bg-gray-800 hover:pl-[1rem] hover:text-white"
 
   const pageName = "text-[1rem] font-bold"
   

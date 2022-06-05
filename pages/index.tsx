@@ -28,7 +28,7 @@ export default function Home() {
       </nav> */}
 
       <Layout>
-        <Dashboard />
+        <Browse/>
       </Layout>
 
 

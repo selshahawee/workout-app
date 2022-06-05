@@ -1,8 +1,12 @@
 import { useSession } from 'next-auth/react'
+import { useRouter } from 'next/router'
 import React from 'react'
 import Image from 'next/image'
-
-import WorkoutList from 'components/WorkoutList'
+import useSWR from 'swr'
+import axios from 'axios'
+import dummy from 'assets/images/download.png'
+import Excercise from 'components/Excercise'
+import ActiveExcercise from 'components/ActiveExcercise'
 
 function Dashboard() {
   const avatarWrapper = 'h-[4rem] w-[4rem] relative rounded-full'
@@ -18,7 +22,16 @@ function Dashboard() {
   
   const colorLoop = (arr) => {
    return arr [Math.floor(Math.random() * arr.length)];
-}
+``}
+
+  // gymday get gets the gym day data, post create gymday . put end gymday
+  const getter = (url) => axios.get(url).then((res) => res.data)
+  const gymday = useSWR('/api/user/gymday', getter)
+  console.log({gymday})
+  const { data: workout , error } = useSWR(`/api/workout/2`, getter)
+  console.log({workout})
+  console.log({data})
+
 
   const recordsTest = [
     {
@@ -56,14 +69,14 @@ function Dashboard() {
 
 
   return (
-    <div className="flex flex-col p-[1rem] justify-center border">
+    <div className="flex flex-col p-[1rem] justify-center border lg:w-[87%]">
       <div className={headTab}>
         <div className="align-center flex flex-col items-start md:flex-row md:justify-between lg:flex-row  lg:justify-between bg-white p-[1.2rem]">
           <div className="flex flex-row items-center justify-center ">
 
             <div className={avatarWrapper}>
               <Image
-                src={session?.user.image}
+                src={session ? session.user.image : dummy}
                 alt="Avatar"
                 layout="fill"
                 className={avatar}
@@ -71,7 +84,7 @@ function Dashboard() {
 
             </div> 
             <div className='flex flex-col items-start justify-start ml-5'>
-              <h3 className='text-[1.7rem] font-bold'>{`Hello, ${session?.user.name}.`}</h3>
+              <h3 className='text-[1.7rem] font-bold'>{`Hello, ${session? session.user.name : `username`}.`}</h3>
               <p>streaks</p>
             </div>
           </div>
@@ -92,10 +105,13 @@ function Dashboard() {
           ))}
         </ul>
       </div>
-      <div className={wrapper}>
-          <WorkoutList/>
-      </div>
-
+      <ul className="flex flex-col items-start justify-center w-full">
+          {data?.exercises?.map((exercise) => (
+            <li key={exercise.id} className='flex-col justify-center border transition ease-in-out delay-150 p-[1rem] rounded-2xl my-[1rem] hover:-translate-y-1 hover:bg-white duration-300'>
+              <Excercise exercise={exercise}/>
+            </li>
+          ))}
+        </ul>
     </div>
   )
 }
