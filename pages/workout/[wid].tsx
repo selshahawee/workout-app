@@ -31,6 +31,7 @@ export default function Workout() {
 // const userEmail = session.user.email
 // const payload = { userEmail }
 
+
   const fetcher = (url) => axios.get(url).then((res) => res.data)
   const { data, error } = useSWR('/api/workout/' + wid, fetcher)
   console.log({data})
@@ -46,6 +47,18 @@ export default function Workout() {
             <CircularProgress color="inherit" className='w-[12rem]'/>
       </div> 
     )  
+
+  const gymday = useSWR('/api/user/gymday', fetcher)
+  console.log(gymday)
+
+  const fetcher = (url) => axios.get(url).then((res) => res.data)
+  const { data, error } = useSWR('/api/workout/' + wid, fetcher)
+  console.log({data})
+
+
+  if (!data) {
+    return <CircularProgress color="inherit" />
+
   }
 
   return (
